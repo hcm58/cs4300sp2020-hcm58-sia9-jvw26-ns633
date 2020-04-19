@@ -29,7 +29,7 @@ with open("data_code/governors_twitter_info.csv", encoding='utf-8') as file:
 
 #change to dictionary format for all tweets, with each column titled (maybe not ones we don't need)
 def gen_state_dictionary(query):
-    state_lst = []
+    state = []
     with open("data_code/governor_data/" + query + ".csv", encoding = 'utf-8') as file:
         reader = csv.reader(file, delimiter=",")
         line_count = 0
@@ -51,11 +51,11 @@ def gen_state_dictionary(query):
                 d["hashtags"] = line[17]
                 d["link"] = line[19]
                 line_count += 1
-                state_lst.append(d)
+                state.append(d)
 
     direct_mentions = []
     tf_mention = []
-    for elem in state_lst:
+    for elem in Maryland:
         if "covid19" in elem["hashtags"] or "coronavirus" in elem["hashtags"] or "coronavirus" in elem["tweet"] or "covid" in elem["tweet"]:
             direct_mentions.append(elem)
             tf_mention.append((elem["date"], True))
@@ -66,6 +66,18 @@ def gen_state_dictionary(query):
     first_mention_date = first_mention["date"]
 
     return first_mention_date
+
+
+# In[115]:
+
+
+#proportion of mentions of disease vs. other
+proportion_mentions = len(direct_mentions)/len(Maryland)
+print(proportion_mentions)
+
+
+# In[116]:
+
 
 #rolling average
 def rolling_avg(lst):
@@ -80,3 +92,19 @@ def rolling_avg(lst):
       #  print(last_seven)
         curr_avg = last_seven/7
         print(curr_avg)
+
+
+# In[117]:
+
+
+rolling_avg_list = rolling_avg(tf_mention)
+
+
+# In[107]:
+
+
+print(first_mention_date)
+print(proportion_mentions)
+
+
+# In[ ]:

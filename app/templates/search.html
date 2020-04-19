@@ -24,10 +24,13 @@
         <form class="form-inline global-search">
         {% if data %}
             <h1>{{output_message}}</h1>
-            {% for d in data %}
+            <br>
+            <h2>First Twitter Mention of the Virus: &nbsp; <h2>
+            <h2> {{data}} <h2>
+          <!--  {% for d in data %}
                 <br>
                 <p>{{d}}</p>
-            {% endfor %}
+            {% endfor %}  -->
         {% endif %}
         </form>
     </body>
