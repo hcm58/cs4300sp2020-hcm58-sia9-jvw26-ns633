@@ -23,14 +23,17 @@
         </form>
         <form class="form-inline global-search">
         {% if data %}
-            <h1>{{output_message}}</h1>
+          <!--  <p> <h1>{{output_message}}</h1> </p>
             <br>
-            <h2>First Twitter Mention of the Virus: &nbsp; <h2>
-            <h2> {{data}} <h2>
-          <!--  {% for d in data %}
+            <p> <h2>First Twitter Mention of the Virus: <h2>
+            <h2> {{data[0]}} <h2> </p>
+            <br>
+            <p> <h2>Percentage of direct mentions of the disease: <h2>
+            <h2> {{data[1]}}%<h2> </p> -->
+            {% for d in data %}
                 <br>
-                <p>{{d}}</p>
-            {% endfor %}  -->
+                <p><h3>{{d[0]}}{{d[1]}}</h3></p>
+            {% endfor %}
         {% endif %}
         </form>
     </body>

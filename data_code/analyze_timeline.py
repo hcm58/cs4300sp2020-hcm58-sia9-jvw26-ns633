@@ -26,7 +26,7 @@ with open("data_code/governors_twitter_info.csv", encoding='utf-8') as file:
 
 
 #change to dictionary format for all tweets, with each column titled (maybe not ones we don't need)
-def gen_state_dictionary(query):
+def get_data(query):
     state_lst = []
     with open("data_code/governor_data/" + query + ".csv", encoding = 'utf-8') as file:
         reader = csv.reader(file, delimiter=",")
@@ -63,7 +63,9 @@ def gen_state_dictionary(query):
     first_mention = direct_mentions[len(direct_mentions)-1]
     first_mention_date = first_mention["date"]
 
-    return first_mention_date
+    proportion_mentions = len(direct_mentions)/len(state_lst) * 100
+
+    return first_mention_date, proportion_mentions
 
 #rolling average
 def rolling_avg(lst):
