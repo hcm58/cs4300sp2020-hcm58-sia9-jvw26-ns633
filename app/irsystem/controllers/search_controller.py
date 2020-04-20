@@ -14,8 +14,6 @@ def search():
 	state = getState(query)
 	print(state)
 	if state == "notastate":
-		print(state)
-		print(query)
 		output_message = "Invalid Query"
 		output_data = ""
 	else:
