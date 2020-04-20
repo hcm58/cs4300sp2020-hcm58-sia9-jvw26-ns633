@@ -12,10 +12,7 @@ net_id = "hcm58, sia9, ns633, jvw6"
 def search():
 	query = request.args.get('search')
 	state = getState(query)
-	print(state)
 	if state == "notastate":
-		print(state)
-		print(query)
 		output_message = "Invalid Query"
 		output_data = ""
 	else:

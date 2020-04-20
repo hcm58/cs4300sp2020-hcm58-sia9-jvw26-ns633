@@ -2,25 +2,9 @@
 # coding: utf-8
 
 # In[108]:
-import csv
+from data_code.get_twitter_info import *
 
-
-# In[109]:
-
-
-twitter_info_list = []
-with open("data_code/governors_twitter_info.csv", encoding='utf-8') as file:
-    reader = csv.reader(file, delimiter=",")
-    line_count = 0
-    for line in reader:
-        if line_count == 0:
-            print("starting...")
-            line_count += 1
-        else:
-            element = {"State": line[0], "Name": line[1], "Handle": line[2][1:]}
-            twitter_info_list.append(element)
-    print("done")
-
+twitter_info_list = create_twitter_list()
 
 # In[110]:
 
