@@ -1,11 +1,13 @@
 import re
 from collections import Counter
 import csv
+import matplotlib.pyplot as plt
+import numpy as np
 
 def load_word_weight(lexicon_file):
     ## Create a mapping from words to numbers
     word_weights = {}
-    with open(lexicon_file, encoding='utf-8') as lexicon_reader:
+    with open(lexicon_file) as lexicon_reader:
         for line in lexicon_reader:
             weight, word = line.rstrip().split(",") ## split on comma
             word_weights[word] = float(weight) ## convert string to number
@@ -37,19 +39,41 @@ word_pattern = re.compile("[\w\-]+") #re looking for 1+ letters or numbers, squa
 
 #make list of states
 state_list = []
+<<<<<<< HEAD
 with open("data_code/twitter_info.csv", encoding='utf-8') as info:
+=======
+with open("data_code/governors_twitter_info.csv", encoding = 'utf-8') as info:
+>>>>>>> ef8c5a706a03e82a136912aefe4910973bd9f04b
     reader = csv.reader(info)
     next(reader)
 
     for line in reader:
         state_list.append(line[0])
 
-#function to get tweet sentiment for every comment
+#helper function to get the average sentiment from a dict of all comment sentiment
+def avg_sent(state_dict):
+    sim_date = {}
+    for date, tweet_info in state_dict.items():
+        sent = tweet_info[0]
+        month_day = date[5:7] + date[8:10]
+        if month_day not in sim_date.keys():
+            sim_date[month_day] = [sent]
+        else:
+            sim_date[month_day].append(sent)
+
+    sent_avg = {}
+    for month, sent_list in sim_date.items():
+        avg = sum(sent_list)/len(sent_list)
+        sent_avg[month] = avg
+
+    return sent_avg
+
+#function to get comment sentiment
 def compile_comment_sent(state_list):
     all_states = {}
     for state in state_list:
         try:
-            with open("data_code/comment_data/" + str(state) + ".csv", encoding='utf-8') as state_file:
+            with open("data_code/comment_data/" + str(state) + ".csv", encoding = 'utf-8') as state_file:
                 reader = csv.reader(state_file)
                 state_dict = {}
                 next(reader)
@@ -64,12 +88,16 @@ def compile_comment_sent(state_list):
                     token_counts = Counter(tokens)
 
                     sentiment = score_counts(token_counts, word_weights)
-
                     state_dict[all_time] = (sentiment, link)
-            all_states[state] = state_dict
+
+                #get average sentiment for each date
+                avg_by_day = avg_sent(state_dict)
+
+            all_states[state] = avg_by_day
         except FileNotFoundError:
+            print(state + " Not Found")
             continue
     return all_states
 
-#get dictionary of all comment sentiment data
+#get dictionary of all avg comment sentiment data by day
 comment_sentiment = compile_comment_sent(state_list)

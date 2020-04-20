@@ -7,7 +7,7 @@ import csv
 
 listofstates = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado","Connecticut", "Deleware", "Florida",
                 "Georgia", "Hawaii", "Idaho", "Illinios", "Indiana", "Iowa","Kansas", "Kentucky", "Louisiana", "Maine",
-                "Maryland", "Massachusetts", "MI - Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska",
+                "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska",
                 "Nevada", "New Hampshire","New Jersey", "New Mexico", "New York", "North Carolina","North Dakota", "Ohio",
                 "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas",
                 "Utah", "Vermont", "Virgina", "Washington", "West Virginia","Wisconsin", "Wyoming"]
