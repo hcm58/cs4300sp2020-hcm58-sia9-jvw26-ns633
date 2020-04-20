@@ -30,7 +30,8 @@ def search():
 	else:
 		state_name = query
 		output_message = state_name
-		data = gen_state_dictionary(query)
+		data = [["Maryland", "Larry Hogan"], "2020-01-30"]
+		#gen_state_dictionary(query)
 
 
 		# for tweet in state_sentiment:

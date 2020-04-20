@@ -2,8 +2,6 @@
 # coding: utf-8
 
 # In[108]:
-
-
 import csv
 
 
