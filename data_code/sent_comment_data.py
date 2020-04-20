@@ -37,7 +37,7 @@ word_pattern = re.compile("[\w\-]+") #re looking for 1+ letters or numbers, squa
 
 #make list of states
 state_list = []
-with open("data_code/governors_twitter_info.csv", encoding='utf-8') as info:
+with open("data_code/twitter_info.csv", encoding='utf-8') as info:
     reader = csv.reader(info)
     next(reader)
 

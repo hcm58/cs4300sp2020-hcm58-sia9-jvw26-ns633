@@ -18,4 +18,4 @@ def create_twitter_list():
                 element = {"State": line[0], "Name": line[1], "Handle": line[2], "Affiliation": line[4]}
                 twitter_info_list.append(element)
                 line_count += 1
-return twitter_info_list
+    return twitter_info_list
