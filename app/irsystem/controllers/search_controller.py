@@ -26,7 +26,7 @@ def search():
 		output_data = []
 		lst = get_data(state)
 		output_data.append(("First Mention Date: ", lst[0]))
-		output_data.append(("Percentage of all tweets with direct mentions: ", round(lst[1],1)))
+		output_data.append(("Percentage of all tweets with direct mentions: ", str(round(lst[1],1)) + "%"))
 
 		avg_date = comment_sentiment[state]
 		plot = make_state_comment_plot(state, avg_date)

@@ -22,7 +22,7 @@ listofpeople = ["Kay Ivey", "Mike Dunleavy", "Doug Ducey", "Asa Hutchinson", "Ga
 
 def makedict():
     with open("data_code/twitter_info.csv", encoding='utf-8') as stategovhandleparty:
-        reader = csv.DictReader(open("data_code/stategovhandleparty.csv", encoding='utf-8'))
+        reader = csv.DictReader(open("data_code/twitter_info.csv", encoding='utf-8'))
 
 
         bigdict = {}

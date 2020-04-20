@@ -8,7 +8,7 @@ import csv
 #of gov
 def create_twitter_list():
     twitter_info_list = []
-    with open("data_code/stategovhandleparty.csv", encoding='utf-8') as file:
+    with open("data_code/twitter_info.csv", encoding='utf-8') as file:
         reader = csv.reader(file, delimiter=",")
         line_count = 0
         for line in reader:
