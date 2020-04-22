@@ -19,10 +19,14 @@ def make_state_comment_plot(state, avg_by_day):
             new_lis.append(tuple(("Apr " + str(tup[0][2:]), tup[1])))
 
     x_pos = np.arange(len(new_lis))
+    fig = plt.figure()
     plt.bar(x_pos, [y[1] for y in new_lis])
     plt.xticks(x_pos, [x[0] for x in new_lis])
     plt.xticks(rotation=70)
     plt.xlabel("Date")
     plt.ylabel("Avg Sentiment Score")
     plt.title(state + " Average Comment Sentiment Score By Day")
-    plt.show()
+
+    url = 'app/templates/plots/'+state+'_sent_plot.png'
+    fig.savefig(url)
+    return url
