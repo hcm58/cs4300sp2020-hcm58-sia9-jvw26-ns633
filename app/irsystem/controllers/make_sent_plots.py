@@ -27,6 +27,6 @@ def make_state_comment_plot(state, avg_by_day):
     plt.ylabel("Avg Sentiment Score")
     plt.title(state + " Average Comment Sentiment Score By Day")
 
-    url = 'app/templates/plots/'+state+'_sent_plot.png'
-    fig.savefig(url)
-    return url
+    link = 'app/static/images/' + state + '_sent_plot.png'
+
+    fig.savefig(link)

@@ -2,6 +2,7 @@
     <head>
         <link rel="stylesheet" href="/static/bootstrap.min.css">
         <link rel="stylesheet" href="/static/main.css">
+        <link rel="stylesheet" href="/static/search_style.css">
     </head>
     <body>
         <div class="topcorner">
@@ -38,7 +39,8 @@
             {% endfor %}
         {% endif %}
         </form>
-        <img src="{{src}}" alt="Comment Sentiment Plot">
-    </body>
 
+        <img src="../static/images/{{state}}_sent_plot.png" alt="Comment Sentiment Plot"/>
+
+    </body>
 </html>

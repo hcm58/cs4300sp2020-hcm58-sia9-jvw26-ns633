@@ -18,7 +18,7 @@ def search():
 	if state == "notastate":
 		output_message = "Invalid Query"
 		output_data = ""
-		src=""
+		link=''
 	else:
 		governor = getGov(state, statedictionary)
 		handle = getHandle(state, statedictionary)
@@ -30,6 +30,6 @@ def search():
 		output_data.append(("First Mention Date: ", lst[0]))
 		output_data.append(("Percentage of all tweets with direct mentions: ", str(round(lst[1],1)) + "%"))
 
-		src = make_state_comment_plot(state, comment_sentiment[state])
+		make_state_comment_plot(state, comment_sentiment[state])
 
-	return render_template('search.html', name=project_name, netid=net_id, src=src, output_message=output_message, data=output_data)
+	return render_template('search.html', name=project_name, netid=net_id, state=state, output_message=output_message, data=output_data)
