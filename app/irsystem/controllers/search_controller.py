@@ -14,10 +14,11 @@ net_id = "hcm58, sia9, ns633, jvw6"
 @irsystem.route('/', methods=['GET'])
 def search():
 	query = request.args.get('search')
+
 	state = getState(query)
 	if state == "notastate":
-		output_message = "Invalid Query"
-		output_data = ""
+		output_message = ''
+		output_data = ''
 		link=''
 	else:
 		governor = getGov(state, statedictionary)
