@@ -6,7 +6,7 @@ from data_code.basicinfofromquery import *
 from data_code.analyze_timeline import *
 from data_code.sent_comment_data import comment_sentiment
 from app.irsystem.controllers.make_sent_plots import make_state_comment_plot
-
+from data_code.editdistance import *
 
 project_name = "NJ, Sophia, Jacob, & Haley's Project"
 net_id = "hcm58, sia9, ns633, jvw6"
@@ -14,7 +14,7 @@ net_id = "hcm58, sia9, ns633, jvw6"
 @irsystem.route('/', methods=['GET'])
 def search():
 	query = request.args.get('search')
-
+	query = min_edit_query(query) #gets min edit distance entry
 	state = getState(query)
 	if state == "notastate":
 		output_message = ''
