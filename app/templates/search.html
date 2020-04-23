@@ -1,46 +1,59 @@
 <html>
     <head>
         <link rel="stylesheet" href="/static/bootstrap.min.css">
-        <link rel="stylesheet" href="/static/main.css">
         <link rel="stylesheet" href="/static/search_style.css">
+        <link rel="stylesheet" href="/static/main.css">
+        <script type="text/javascript" href="/static/javascript.js"></script>
     </head>
     <body>
         <div class="topcorner">
-            <p>Project Name: {{ name }}</p>
-            <p>Student Name: ({{ netid }})</p>
+            <p style="color:white">Project Name: {{ name }}</p>
+            <p style="color:white">Student Name: ({{ netid }})</p>
+
         </div>
-        <form class="form-inline global-search">
-            <h1 style="font-size: 55px; font-family:Futura; color: #4285F4">
-                Governors On Corona
+        <form class="form-parent form-inline global-search">
+          <div class="form-child">
+            <h1 style="font-size: 50px; font-family:Futura; color: red">
+                Governors on Corona
                 <span style="color: #EA4335; ">
             </h1>
+            <h2 id='title-subheading' style="font-size: 15px;"> Discover how your governor responded to the 2020 COVID-19 Pandemic. </h2>
+          </div>
 
             <br><br>
 
+          <div class="form-child">
             <div class="form-group">
                 <input id="input" type="text" name="search" class="form-control" placeholder="Enter State or Name of Governor">
             </div>
-            <button type="submit" class="btn btn-info"> Go! </button>
+            <button onclick="show()" type="submit" class="btn btn-info"> Go! </button>
+          </div>
+
         </form>
+
+
         <form class="form-inline global-search">
-        <h1>{{output_message}}</h1>
-        {% if data %}
-          <!--  <p> <h1>{{output_message}}</h1> </p>
-            <br>
-            <p> <h2>First Twitter Mention of the Virus: <h2>
-            <h2> {{data[0]}} <h2> </p>
-            <br>
-            <p> <h2>Percentage of direct mentions of the disease: <h2>
-            <h2> {{data[1]}}%<h2> </p> -->
+        <div id="results">
+          <h1>{{output_message}}</h1>
+          {% if data %}
+            <!--  <p> <h1>{{output_message}}</h1> </p>
+              <br>
+              <p> <h2>First Twitter Mention of the Virus: <h2>
+              <h2> {{data[0]}} <h2> </p>
+              <br>
+              <p> <h2>Percentage of direct mentions of the disease: <h2>
+              <h2> {{data[1]}}%<h2> </p> -->
 
-            {% for d in data %}
-                <br>
-                <p><h3>{{d[0]}}{{d[1]}}</h3></p>
-            {% endfor %}
-        {% endif %}
-        </form>
+              {% for d in data %}
+                  <br>
+                  <p><h3>{{d[0]}}{{d[1]}}</h3></p>
+              {% endfor %}
+          {% endif %}
+          </form>
 
-        <img src="../static/images/{{state}}_sent_plot.png" alt="Comment Sentiment Plot"/>
+
+      </div>
+      <img id="sent-plot" class="center" src="../static/images/{{state}}_sent_plot.png" alt="Comment Sentiment Plot"/>
 
     </body>
 </html>

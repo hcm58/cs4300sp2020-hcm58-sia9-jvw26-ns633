@@ -17,8 +17,8 @@ def search():
 	query = min_edit_query(query) #gets min edit distance entry
 	state = getState(query)
 	if state == "notastate":
-		output_message = "Invalid Query"
-		output_data = ""
+		output_message = ''
+		output_data = ''
 		link=''
 	else:
 		governor = getGov(state, statedictionary)
