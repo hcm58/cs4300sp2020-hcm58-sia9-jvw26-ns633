@@ -45,7 +45,6 @@ def edit_matrix(query, message):
     return chart
 
 def edit_distance(query, message):
-
     query = query.lower()
     msg = message
     msg = msg.lower()

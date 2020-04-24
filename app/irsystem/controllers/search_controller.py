@@ -14,7 +14,8 @@ net_id = "hcm58, sia9, ns633, jvw6"
 @irsystem.route('/', methods=['GET'])
 def search():
 	query = request.args.get('search')
-	query = min_edit_query(query) #gets min edit distance entry
+	if query is not None:
+		query = min_edit_query(query) #gets min edit distance entry
 	state = getState(query)
 	if state == "notastate":
 		output_message = ''
