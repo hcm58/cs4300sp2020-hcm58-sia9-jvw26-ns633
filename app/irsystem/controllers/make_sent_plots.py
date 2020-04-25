@@ -37,6 +37,6 @@ def make_state_comment_plot(state, avg_by_day):
 
 
 
-    link = 'app/static/images/' + state + '_sent_plot.png'
+    link = 'app/static/images/' + state + '_sent_plot1.png'
 
     fig.savefig(link)
