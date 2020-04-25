@@ -5,12 +5,15 @@
         <link rel="stylesheet" href="/static/main.css">
         <script type="text/javascript" href="/static/javascript.js"></script>
     </head>
+
     <body>
+      <!-- <div id="header"> -->
         <div class="topcorner">
             <p style="color:white">Project Name: {{ name }}</p>
             <p style="color:white">Student Name: ({{ netid }})</p>
-
         </div>
+
+      <div id="header">
         <form class="form-parent form-inline global-search">
           <div class="form-child">
             <h1 style="font-size: 50px; font-family:Futura; color: red">
@@ -30,27 +33,74 @@
           </div>
 
         </form>
+      </div>
+
+
 
 
         <form class="form-inline global-search">
         <div id="results">
           <h1>{{output_message}}</h1>
-          {% if data %}
-            <!--  <p> <h1>{{output_message}}</h1> </p>
-              <br>
-              <p> <h2>First Twitter Mention of the Virus: <h2>
-              <h2> {{data[0]}} <h2> </p>
-              <br>
-              <p> <h2>Percentage of direct mentions of the disease: <h2>
-              <h2> {{data[1]}}%<h2> </p> -->
+        </div>
 
-              {% for d in data %}
-                  <br>
-                  <p><h3>{{d[0]}}{{d[1]}}</h3></p>
-              {% endfor %}
-          {% endif %}
-          </form>
+                  {% if data %}
+                    <!--  <p> <h1>{{output_message}}</h1> </p>
+                      <br>
+                      <p> <h2>First Twitter Mention of the Virus: <h2>
+                      <h2> {{data[0]}} <h2> </p>
+                      <br>
+                      <p> <h2>Percentage of direct mentions of the disease: <h2>
+                      <h2> {{data[1]}}%<h2> </p> -->
 
+                      {% for d in data %}
+                          <br>
+                          <p><h3>{{d[0]}}{{d[1]}}</h3></p>
+                      {% endfor %}
+                  {% endif %}
+                  </form>
+
+                  <table style="width:60%">
+                    <tr>
+                      <th>US Data</th>
+                      <th>Governor Data</th>
+                    </tr>
+                    <tr>
+                      <td>First Mention</td>
+                      <td>First Mention</td>
+                    </tr>
+                    <tr>
+                      <td>Another Stat</td>
+                      <td>Governor Stat</td>
+                    </tr>
+                    <tr>
+                      <td>Another Stat</td>
+                      <td>Governor Stat</td>
+                    </tr>
+                    <tr>
+                      <td>Another Stat</td>
+                      <td>Governor Stat</td>
+                    </tr>
+                  </table>
+
+
+
+          <!-- <div id="results">
+            <h1>{{output_message}}</h1>
+            {% if data %} -->
+              <!--  <p> <h1>{{output_message}}</h1> </p>
+                <br>
+                <p> <h2>First Twitter Mention of the Virus: <h2>
+                <h2> {{data[0]}} <h2> </p>
+                <br>
+                <p> <h2>Percentage of direct mentions of the disease: <h2>
+                <h2> {{data[1]}}%<h2> </p> -->
+
+                <!-- {% for d in data %}
+                    <br>
+                    <p><h3>{{d[0]}}{{d[1]}}</h3></p>
+                {% endfor %}
+            {% endif %}
+            </form> -->
 
       </div>
       <img id="sent-plot" class="center" src="../static/images/{{state}}_sent_plot.png" alt="Comment Sentiment Plot"/>
