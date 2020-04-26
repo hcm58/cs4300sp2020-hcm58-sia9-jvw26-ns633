@@ -21,14 +21,23 @@ body {
 }
 
 .center {
-  text-align:center;
+  display: block;
   margin-left: auto;
   margin-right: auto;
   width: 50%;
 }
 
+#profile {
+  border-radius: 50%;
+  
+}
+
 #results {
-  margin-top: 250px;
+  margin-top: 375px;
+  display:block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
   /* padding:20px; */
 }
 
