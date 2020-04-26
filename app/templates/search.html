@@ -40,9 +40,12 @@
 
         <form class="form-inline global-search">
         <div id="results">
-          <img src="https://twitter.com/{{data[2]}}/photo" alt="Governor's Profile Picture">
-          <h1>{{output_message}}</h1>
+
+          <img class="center" src="../static/profile_images/{{state}}_profile.png" alt="Governor's Profile Picture">
         </div>
+
+          <h1>{{output_message}}</h1>
+        <!-- </div> -->
 
                   {% if data %}
                     <!--  <p> <h1>{{output_message}}</h1> </p>
@@ -84,7 +87,6 @@
                   </table>
 
 
-
           <!-- <div id="results">
             <h1>{{output_message}}</h1>
             {% if data %} -->
@@ -103,8 +105,6 @@
             {% endif %}
             </form> -->
 
-      </div>
       <img id="sent-plot" class="center" src="../static/images/{{state}}_sent_plot1.png" alt="Comment Sentiment Plot"/>
-
     </body>
 </html>
