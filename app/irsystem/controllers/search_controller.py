@@ -28,9 +28,15 @@ def search():
 		output_message = state + " - " + governor + " (" +party+  ") - " + handle
 
 		output_data = []
-		lst = get_data(state)
-		output_data.append(("First Mention Date: ", lst[0]))
-		output_data.append(("Percentage of all tweets with direct mentions: ", str(round(lst[1],1)) + "%"))
+		results = get_gov_data(state)
+		output_data.append(("First Mention Date: ", results[0][0]))
+		output_data.append(("Percentage of all tweets with direct mentions: ", str(round(results[1],1)) + "%"))
+		output_data.append(("Mention of Social Distance: ", results[2]))
+
+		#output data looks like
+		#0. first mention = [date, tweet, link]
+		#1. proportion mention = int
+		#2. social distance mention = [date, tweet, link]
 
 		make_state_comment_plot(state, comment_sentiment[state])
 

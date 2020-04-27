@@ -1,17 +1,13 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[108]:
 from data_code.get_twitter_info import *
 
 twitter_info_list = create_twitter_list()
 
-# In[110]:
-
-
 #change to dictionary format for all tweets, with each column titled (maybe not ones we don't need)
-def get_data(query):
-    state_lst = []
+def get_gov_data(query):
+    gov_tweet_lst = []
     with open("data_code/governor_data/" + query + ".csv", encoding = 'utf-8') as file:
         reader = csv.reader(file, delimiter=",")
         line_count = 0
@@ -33,26 +29,60 @@ def get_data(query):
                 d["hashtags"] = line[17]
                 d["link"] = line[19]
                 line_count += 1
-                state_lst.append(d)
+                gov_tweet_lst.append(d)
 
+    direct_mentions = get_direct_mentions(gov_tweet_lst)
+    first_mention = get_first_mention(direct_mentions)
+    proportion_mentions = get_proportion_mentions(gov_tweet_lst,direct_mentions)
+    first_mention_result = (first_mention["date"], first_mention["tweet"], first_mention["link"])
+
+    social_distance = get_social_distance_mention(direct_mentions)
+    if social_distance == "No direct mention of social distance":
+        social_distance_result = "No direct mention of social distance"
+    else:
+        social_distance_result = social_distance["date"]
+        #, social_distance["tweet"], social_distance["link"])
+
+    return [first_mention_result, proportion_mentions, social_distance_result]
+
+#gets all tweets of a given state that include covid19, coronavirus in hashtag or tweet
+def get_direct_mentions(lst):
     direct_mentions = []
-    tf_mention = []
-    for elem in state_lst:
+    for elem in lst:
         if "covid19" in elem["hashtags"] or "coronavirus" in elem["hashtags"] or "coronavirus" in elem["tweet"] or "covid" in elem["tweet"]:
             direct_mentions.append(elem)
-            tf_mention.append((elem["date"], True))
-        else:
-            tf_mention.append((elem["date"], False))
+    return direct_mentions
 
-    first_mention = direct_mentions[len(direct_mentions)-1]
-    first_mention_date = first_mention["date"]
+#takes in direct-mentions, returns the last element in the lst, assumed to be the earliest
+def get_first_mention(lst):
+    result = lst[len(lst)-1]
+#    first_mention_date = first_mention["date"]
+    return result
 
-    proportion_mentions = len(direct_mentions)/len(state_lst) * 100
+#takes in state list of total tweets and list of direct mentions, returns percentage of gov_tweet_lst
+#that mention coronavirus
+def get_proportion_mentions(state_lst, direct_mentions_lst):
+    result = len(direct_mentions_lst)/len(state_lst) * 100
+    return result
 
-    return first_mention_date, proportion_mentions
+def get_social_distance_mention(lst):
+    result = []
+    for elem in lst:
+        if "social distance" in elem["tweet"] or "social distancing" in elem["tweet"]:
+            result.append(elem)
+    length = len(result)
+    if length == 0:
+        return "No direct mention of social distance"
+    else:
+        return result[(length-1)]
+
+#takes in all tweets by the governor, returns score measuring christianity religiousness
+#def get_religious_score(lst):
+#    for elem in lst:
+
 
 #rolling average
-def rolling_avg(lst):
+def get_rolling_avg(lst):
     last_seven = 0
     lst.reverse()
     for date, tf in lst:
