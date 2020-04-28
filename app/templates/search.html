@@ -65,6 +65,7 @@
     {% endfor %} {% endif %}
   </form>
 
+  {% if timeline_data|length != 0 %}
   <table style="width:60%">
     <tr>
       <th>US Data</th>
@@ -97,6 +98,7 @@
       <td></td>
     </tr>
   </table>
+  {% else %} {% endif %}
 
 
   <!-- <div id="results">
