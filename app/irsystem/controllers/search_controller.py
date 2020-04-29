@@ -8,6 +8,8 @@ from data_code.sent_comment_data import comment_sentiment
 from app.irsystem.controllers.make_sent_plots import make_state_comment_plot
 from data_code.editdistance import *
 from data_code.analyze_timeline import *
+from app.irsystem.controllers.make_religion_plots import make_religion_plot
+
 
 project_name = "NJ, Sophia, Jacob, & Haley's Project"
 net_id = "hcm58, sia9, ns633, jvw6"
@@ -34,6 +36,7 @@ def search():
 		output_data.append(("First Mention Date: ", results[0][0]))
 		output_data.append(("Percentage of all tweets with direct mentions: ", str(round(results[1],1)) + "%"))
 		output_data.append(("Mention of Social Distance: ", results[2]))
+		output_data.append(("Relgion Dictionary: ", results[3]))
 
 		#output data looks like
 		#0. first mention = [date, tweet, link]
@@ -43,5 +46,7 @@ def search():
 		timeline_data = get_gov_data(state)
 
 		make_state_comment_plot(state, comment_sentiment[state])
+		make_religion_plot(state, results[3])
+
 
 	return render_template('search.html', name=project_name, netid=net_id, state=state, output_message=output_message, data=output_data, timeline_data=timeline_data)
