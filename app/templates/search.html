@@ -5,6 +5,8 @@
   <link rel="stylesheet" href="/static/search_style.css">
   <link rel="stylesheet" href="/static/main.css">
   <script type="text/javascript" href="/static/javascript.js"></script>
+  <title>COVID-19 Politicians</title>
+  <link rel="icon" href="/static/images/title_icon.png" type="image/title_icon.png">
 </head>
 
 <body>
@@ -121,8 +123,10 @@
 
   <img id="sent-plot" class="center" src="../static/images/{{state}}_sent_plot1.png" alt="Comment Sentiment Plot" />
 
-  <img id="sent-plot" class="center" src="../static/images/{{state}}_religion_plot.png" alt="Religion Plot" />
-  <table style="width:20%">
+<div class="religion-parent">
+  <img class="religion-child" id="sent-plot" class="center" src="../static/images/{{state}}_religion_plot.png" alt="Religion Plot" />
+  {% if religion_data|length != 0 %}
+  <table class="religion-child" id="religion-table" style="width:20%">
     <tr>
       <th>Religion</th>
       <th>Number of Mentions</th>
@@ -143,6 +147,9 @@
       <td>Neutral</td>
       <td>{{religion_data[3][1]}}</td>
     </tr>
+  </table>
+  {% else %} {% endif %}
+</div>
 </body>
 
 </html>

@@ -37,7 +37,6 @@ def search():
 		output_data.append(("First Mention Date: ", results[0][0]))
 		output_data.append(("Percentage of all tweets with direct mentions: ", str(round(results[1],1)) + "%"))
 		output_data.append(("Mention of Social Distance: ", results[2]))
-		output_data.append(("Relgion Dictionary: ", results[3]))
 
 		religion_data = results[3]
 		#output data looks like

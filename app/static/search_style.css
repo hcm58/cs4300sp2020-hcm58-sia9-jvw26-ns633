@@ -65,6 +65,16 @@ th, td {
   padding: 10px;
 }
 
-#img-table {
-  position: absolute;
+.religion-parent {
+  padding: 20px;
+}
+
+.religion-child {
+  width: 50%;
+  float: left;
+}
+
+#religion-table{
+  margin-top: 150px;
+  margin-left: 50px;
 }
