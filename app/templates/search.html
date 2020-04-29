@@ -121,7 +121,28 @@
 
   <img id="sent-plot" class="center" src="../static/images/{{state}}_sent_plot1.png" alt="Comment Sentiment Plot" />
 
-  <img id="sent-plot" class="center" src="../static/images/{{state}}_religion_plot.png" alt="Comment Sentiment Plot" />
+  <img id="sent-plot" class="center" src="../static/images/{{state}}_religion_plot.png" alt="Religion Plot" />
+  <table style="width:20%">
+    <tr>
+      <th>Religion</th>
+      <th>Word Count</th>
+    </tr>
+    <tr>
+      <td>Christian</td>
+      <td>{{religion_data[0][1]}}</td>
+    </tr>
+    <tr>
+      <td>Jewish</td>
+      <td>{{religion_data[1][1]}}</td>
+    </tr>
+    <tr>
+      <td>Muslim</td>
+      <td>{{religion_data[2][1]}}</td>
+    </tr>
+    <tr>
+      <td>Neutral</td>
+      <td>{{religion_data[3][1]}}</td>
+    </tr>
 </body>
 
 </html>

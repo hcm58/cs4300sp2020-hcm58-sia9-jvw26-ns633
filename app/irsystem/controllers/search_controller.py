@@ -25,6 +25,7 @@ def search():
 		output_data = ''
 		link=''
 		timeline_data=''
+		religion_data=''
 	else:
 		governor = getGov(state, statedictionary)
 		handle = getHandle(state, statedictionary)
@@ -38,6 +39,7 @@ def search():
 		output_data.append(("Mention of Social Distance: ", results[2]))
 		output_data.append(("Relgion Dictionary: ", results[3]))
 
+		religion_data = results[3]
 		#output data looks like
 		#0. first mention = [date, tweet, link]
 		#1. proportion mention = int
@@ -49,4 +51,4 @@ def search():
 		make_religion_plot(state, results[3])
 
 
-	return render_template('search.html', name=project_name, netid=net_id, state=state, output_message=output_message, data=output_data, timeline_data=timeline_data)
+	return render_template('search.html', name=project_name, netid=net_id, state=state, output_message=output_message, data=output_data, timeline_data=timeline_data, religion_data=religion_data)

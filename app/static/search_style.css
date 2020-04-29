@@ -29,7 +29,7 @@ body {
 
 #profile {
   border-radius: 50%;
-  
+
 }
 
 #results {
@@ -63,4 +63,8 @@ table {
 
 th, td {
   padding: 10px;
+}
+
+#img-table {
+  position: absolute;
 }
