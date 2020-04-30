@@ -40,31 +40,13 @@
 
   <form class="form-inline global-search">
     <div id="results">
-
       <img id="profile" class="center" src="../static/profile_images/{{state}}_profile.png" alt="Governor's Profile Picture">
-
     </div>
 
     <h1>{{output_message}}</h1>
     <!-- </div> -->
 
-    {% if data %}
-    <!--  <p> <h1>{{output_message}}</h1> </p>
-                      <br>
-                      <p> <h2>First Twitter Mention of the Virus: <h2>
-                      <h2> {{data[0]}} <h2> </p>
-                      <br>
-                      <p> <h2>Percentage of direct mentions of the disease: <h2>
-                      <h2> {{data[1]}}%<h2> </p> -->
-
-    {% for d in data %}
-    <br>
-    <p>
-      <h3>{{d[0]}}{{d[1]}}</h3>
-    </p>
-    {% endfor %} {% endif %}
   </form>
-
   <table style="width:60%">
     <tr>
       <th>US Data</th>
@@ -74,27 +56,27 @@
     <tr>
       <td>First Mention</td>
       <td>{{timeline_data[0][0]}}</td>
-      <td>{{timeline_data[0][1]}}</td>
-    </tr>
-    <tr>
-      <td>Recognition of Problem</td>
-      <td>Governor Stat</td>
-      <td></td>
+      <td><a href="{{timeline_data[0][2]}}">{{timeline_data[0][1]}}</a></td>
     </tr>
     <tr>
       <td>Social Distancing Mention</td>
-      <td>Governor Stat</td>
-      <td></td>
+      <td>{{timeline_data[2][0]}}</td>
+      <td><a href="{{timeline_data[2][2]}}">{{timeline_data[2][1]}}</a></td>
+    </tr>
+    <tr>
+      <td>Mention of God</td>
+      <td>{{timeline_data[3][0]}}</td>
+      <td><a href="{{timeline_data[3][2]}}">{{timeline_data[3][1]}}</a></td>
     </tr>
     <tr>
       <td>Lockdown Mention</td>
       <td>Governor Stat</td>
-      <td></td>
+      <td><blockquote class="twitter-tweet"><p lang="en" dir="ltr">Today I announced an expanded testing strategy and aggressive new actions to address outbreaks of <a href="https://twitter.com/hashtag/COVID19?src=hash&amp;ref_src=twsrc%5Etfw">#COVID19</a> in Maryland’s nursing homes and poultry processing plants. <br><br>Read today’s announcements: <a href="https://t.co/ahcgaeVwjY">https://t.co/ahcgaeVwjY</a></p>&mdash; Governor Larry Hogan (@GovLarryHogan) <a href="https://twitter.com/GovLarryHogan/status/1255612875248295936?ref_src=twsrc%5Etfw">April 29, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>  </td>
     </tr>
     <tr>
       <td>Easing of Lockdown Mention</td>
       <td>Governor Stat</td>
-      <td></td>
+      <td><blockquote class="twitter-tweet"><p lang="en" dir="ltr">If we all do our part to rise to this challenge and to meet this moment, we will get through this together. <br><br>For health updates, visit <a href="https://t.co/Shy9A0ubl9">https://t.co/Shy9A0ubl9</a>.<br>For an A-to-Z COVID-19 resource guide and opportunities to help fellow Marylanders, visit <a href="https://t.co/Ip3zZPdN4L">https://t.co/Ip3zZPdN4L</a>. <a href="https://t.co/ciZZAzj0Yq">pic.twitter.com/ciZZAzj0Yq</a></p>&mdash; Governor Larry Hogan (@GovLarryHogan) <a href="https://twitter.com/GovLarryHogan/status/1241821069402669056?ref_src=twsrc%5Etfw">March 22, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> </td>
     </tr>
   </table>
 

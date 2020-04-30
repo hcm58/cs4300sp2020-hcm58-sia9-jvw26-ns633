@@ -36,14 +36,11 @@ def get_gov_data(query):
     proportion_mentions = get_proportion_mentions(gov_tweet_lst,direct_mentions)
     first_mention_result = (first_mention["date"], first_mention["tweet"], first_mention["link"])
 
-    social_distance = get_social_distance_mention(direct_mentions)
-    if social_distance == "No direct mention of social distance":
-        social_distance_result = "No direct mention of social distance"
-    else:
-        social_distance_result = social_distance["date"]
+    social_distance_result = get_social_distance_mention(direct_mentions)
+    god_result = get_god_mention(gov_tweet_lst)
         #, social_distance["tweet"], social_distance["link"])
 
-    return [first_mention_result, proportion_mentions, social_distance_result]
+    return [first_mention_result, proportion_mentions, social_distance_result, god_result]
 
 #gets all tweets of a given state that include covid19, coronavirus in hashtag or tweet
 def get_direct_mentions(lst):
@@ -72,9 +69,23 @@ def get_social_distance_mention(lst):
             result.append(elem)
     length = len(result)
     if length == 0:
-        return "No direct mention of social distance"
+        return ["N/A","No Direct Mention of Social Distancing","N/A"]
     else:
-        return result[(length-1)]
+        tweet = result[(length-1)]
+        return [tweet["date"], tweet["tweet"], tweet["link"]]
+
+
+def get_god_mention(lst):
+    result = []
+    for elem in lst:
+        if "god" in elem["tweet"]:
+            result.append(elem)
+    length = len(result)
+    if length == 0:
+        return ["N/A", "No direct mention of God", "N/A"]
+    else:
+        tweet = result[(length-1)]
+        return [tweet["date"], tweet["tweet"], tweet["link"]]
 
 #takes in all tweets by the governor, returns score measuring christianity religiousness
 #def get_religious_score(lst):

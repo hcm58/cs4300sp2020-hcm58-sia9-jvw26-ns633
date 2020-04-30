@@ -30,10 +30,10 @@ def search():
 		output_message = state + " - " + governor + " (" +party+  ") - " + handle
 
 		output_data = []
-		results = get_gov_data(state)
-		output_data.append(("First Mention Date: ", results[0][0]))
-		output_data.append(("Percentage of all tweets with direct mentions: ", str(round(results[1],1)) + "%"))
-		output_data.append(("Mention of Social Distance: ", results[2]))
+	#	results = get_gov_data(state)
+	#	output_data.append(("First Mention Date: ", results[0]))
+	#	output_data.append(("Percentage of all tweets with direct mentions: ", (str(round(results[1],1)) + "%"))
+	#	output_data.append(("Mention of Social Distance: ", results[2]))
 
 		#output data looks like
 		#0. first mention = [date, tweet, link]
