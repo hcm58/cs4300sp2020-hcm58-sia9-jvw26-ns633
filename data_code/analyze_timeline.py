@@ -2,6 +2,8 @@
 # coding: utf-8
 
 from data_code.get_twitter_info import *
+import pandas as pd
+import re
 
 twitter_info_list = create_twitter_list()
 
@@ -35,12 +37,13 @@ def get_gov_data(query):
     first_mention = get_first_mention(direct_mentions)
     proportion_mentions = get_proportion_mentions(gov_tweet_lst,direct_mentions)
     first_mention_result = (first_mention["date"], first_mention["tweet"], first_mention["link"])
+    religion_dict=get_religion(gov_tweet_lst, "data_code/religious_words.csv")
 
     social_distance_result = get_social_distance_mention(direct_mentions)
-    god_result = get_god_mention(gov_tweet_lst)
+    #god_result = get_god_mention(gov_tweet_lst)
         #, social_distance["tweet"], social_distance["link"])
 
-    return [first_mention_result, proportion_mentions, social_distance_result, god_result]
+    return [first_mention_result, proportion_mentions, social_distance_result, religion_dict]
 
 #gets all tweets of a given state that include covid19, coronavirus in hashtag or tweet
 def get_direct_mentions(lst):
@@ -105,3 +108,43 @@ def get_rolling_avg(lst):
       #  print(last_seven)
         curr_avg = last_seven/7
         print(curr_avg)
+
+#get religious mentions
+
+
+def get_religion(tweet_list, religion_data):
+    religion = pd.read_csv(religion_data)
+    christian = [word for word in religion['christian'] if str(word) != "nan"]
+    jewish = [word for word in religion['jewish'] if str(word) != "nan"]
+    muslim = [word for word in religion['muslim'] if str(word) != "nan"]
+    neutral = [word for word in religion['overall'] if str(word) != "nan"]
+
+    christian_count=0
+    jewish_count=0
+    muslim_count=0
+    neutral_count=0
+
+    for tweet in tweet_list:
+        tweet = tweet["tweet"]
+        tokens = tokenize(tweet)
+        for word in tokens:
+            if word in christian:
+                christian_count+=1
+            if word in jewish:
+                jewish_count+=1
+            if word in muslim:
+                muslim_count+=1
+            if word in neutral:
+                neutral_count+=1
+
+    lis=[]
+    lis.append(("Christian",christian_count))
+    lis.append(("Jewish",jewish_count))
+    lis.append(("Muslim",muslim_count))
+    lis.append(("Neutral",neutral_count))
+    return lis
+
+
+def tokenize(tweet):
+    words = re.findall(r'[A-Za-z]+',tweet)
+    return words

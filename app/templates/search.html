@@ -5,6 +5,8 @@
   <link rel="stylesheet" href="/static/search_style.css">
   <link rel="stylesheet" href="/static/main.css">
   <script type="text/javascript" href="/static/javascript.js"></script>
+  <title>COVID-19 Politicians</title>
+  <link rel="icon" href="/static/images/title_icon.png" type="image/title_icon.png">
 </head>
 
 <body>
@@ -47,6 +49,8 @@
     <!-- </div> -->
 
   </form>
+
+  {% if timeline_data|length != 0 %}
   <table style="width:60%">
     <tr>
       <th>US Data</th>
@@ -79,6 +83,7 @@
       <td><blockquote class="twitter-tweet"><p lang="en" dir="ltr">If we all do our part to rise to this challenge and to meet this moment, we will get through this together. <br><br>For health updates, visit <a href="https://t.co/Shy9A0ubl9">https://t.co/Shy9A0ubl9</a>.<br>For an A-to-Z COVID-19 resource guide and opportunities to help fellow Marylanders, visit <a href="https://t.co/Ip3zZPdN4L">https://t.co/Ip3zZPdN4L</a>. <a href="https://t.co/ciZZAzj0Yq">pic.twitter.com/ciZZAzj0Yq</a></p>&mdash; Governor Larry Hogan (@GovLarryHogan) <a href="https://twitter.com/GovLarryHogan/status/1241821069402669056?ref_src=twsrc%5Etfw">March 22, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> </td>
     </tr>
   </table>
+  {% else %} {% endif %}
 
 
   <!-- <div id="results">
@@ -100,6 +105,34 @@
             </form> -->
 
   <img id="sent-plot" class="center" src="../static/images/{{state}}_sent_plot1.png" alt="Comment Sentiment Plot" />
+
+<div class="religion-parent">
+  <img class="religion-child" id="sent-plot" class="center" src="../static/images/{{state}}_religion_plot.png" alt="Religion Plot" />
+  {% if religion_data|length != 0 %}
+  <table class="religion-child" id="religion-table" style="width:20%">
+    <tr>
+      <th>Religion</th>
+      <th>Number of Mentions</th>
+    </tr>
+    <tr>
+      <td>Christian</td>
+      <td>{{religion_data[0][1]}}</td>
+    </tr>
+    <tr>
+      <td>Jewish</td>
+      <td>{{religion_data[1][1]}}</td>
+    </tr>
+    <tr>
+      <td>Muslim</td>
+      <td>{{religion_data[2][1]}}</td>
+    </tr>
+    <tr>
+      <td>Neutral</td>
+      <td>{{religion_data[3][1]}}</td>
+    </tr>
+  </table>
+  {% else %} {% endif %}
+</div>
 </body>
 
 </html>

@@ -29,7 +29,7 @@ body {
 
 #profile {
   border-radius: 50%;
-  
+
 }
 
 #results {
@@ -63,4 +63,18 @@ table {
 
 th, td {
   padding: 10px;
+}
+
+.religion-parent {
+  padding: 20px;
+}
+
+.religion-child {
+  width: 50%;
+  float: left;
+}
+
+#religion-table{
+  margin-top: 150px;
+  margin-left: 50px;
 }
