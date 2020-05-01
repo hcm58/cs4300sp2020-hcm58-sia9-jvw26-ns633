@@ -26,6 +26,8 @@ def search():
 		link=''
 		timeline_data=''
 		religion_data=''
+		handle=''
+		governor=''
 	else:
 		governor = getGov(state, statedictionary)
 		handle = getHandle(state, statedictionary)
@@ -50,4 +52,4 @@ def search():
 		make_religion_plot(state, results[3])
 
 
-	return render_template('search.html', name=project_name, netid=net_id, state=state, output_message=output_message, data=output_data, timeline_data=timeline_data, religion_data=religion_data)
+	return render_template('search.html', governor=governor, handle=handle, name=project_name, netid=net_id, state=state, output_message=output_message, data=output_data, timeline_data=timeline_data, religion_data=religion_data)

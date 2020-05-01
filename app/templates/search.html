@@ -50,54 +50,48 @@
     <h1>{{output_message}}</h1>
     <!-- </div> -->
 
-    {% if data %}
-    <!--  <p> <h1>{{output_message}}</h1> </p>
-                      <br>
-                      <p> <h2>First Twitter Mention of the Virus: <h2>
-                      <h2> {{data[0]}} <h2> </p>
-                      <br>
-                      <p> <h2>Percentage of direct mentions of the disease: <h2>
-                      <h2> {{data[1]}}%<h2> </p> -->
 
-    {% for d in data %}
-    <br>
-    <p>
-      <h3>{{d[0]}}{{d[1]}}</h3>
-    </p>
-    {% endfor %} {% endif %}
   </form>
 
+
   {% if timeline_data|length != 0 %}
+  <h2 class="center" style="text-align:center">{{state}}'s Reaction to COVID-19</h2>
   <table style="width:60%">
     <tr>
-      <th>US Data</th>
-      <th>Governor Data</th>
-      <th>Tweet</th>
+      <th>Event</th>
+      <th>Date</th>
+      <th>Date Tweeted</th>
+      <th>Example Tweet on Event</th>
     </tr>
     <tr>
       <td>First Mention</td>
+      <td></td>
       <td>{{timeline_data[0][0]}}</td>
       <td>{{timeline_data[0][1]}}</td>
     </tr>
     <tr>
-      <td>Recognition of Problem</td>
-      <td>Governor Stat</td>
+      <td>Declares State of Emergency</td>
       <td></td>
+      <td>{{timeline_data[4][0]}}</td>
+      <td>{{timeline_data[4][1]}}</td>
     </tr>
     <tr>
       <td>Social Distancing Mention</td>
-      <td>Governor Stat</td>
       <td></td>
+      <td>{{timeline_data[2][0]}}</td>
+      <td>{{timeline_data[2][1]}}</td>
     </tr>
     <tr>
-      <td>Lockdown Mention</td>
-      <td>Governor Stat</td>
+      <td>Shelter in Place</td>
       <td></td>
+      <td>{{timeline_data[5][0]}}</td>
+      <td>{{timeline_data[5][1]}}</td>
     </tr>
     <tr>
-      <td>Easing of Lockdown Mention</td>
-      <td>Governor Stat</td>
+      <td>Closed K-12 Schools</td>
       <td></td>
+      <td>{{timeline_data[6][0]}}</td>
+      <td>{{timeline_data[6][1]}}</td>
     </tr>
   </table>
   {% else %} {% endif %}
@@ -121,11 +115,32 @@
             {% endif %}
             </form> -->
 
+            {% if timeline_data|length != 0 %}
+            <h2 class="center" style="text-align:center">Twitter Statistics:</h2>
+            <table style="width:60%">
+              <tr>
+                <td>First Mention of COVID-19 on Twitter</td>
+                <td>{{timeline_data[0][0]}}</td>
+                <td>{{timeline_data[0][1]}}</td>
+              </tr>
+              <tr>
+                <td>Percentage of all tweets with direct mentions</td>
+                <td>{{data[1][1]}}</td>
+                <td></td>
+              </tr>
+            </table>
+            {% else %} {% endif %}
+  <h3 class="center" style="text-align:center">The Average Sentiment in {{handle}} Twitter Comments</h3>
+  <p style="text-align:center">This graph demonstrates how {{state}}'s constituents felt towards their governor during the 2020 COVID-19 Pandemic.</p>
   <img id="sent-plot" class="center" src="../static/images/{{state}}_sent_plot1.png" alt="Comment Sentiment Plot" />
 
-<div class="religion-parent">
-  <img class="religion-child" id="sent-plot" class="center" src="../static/images/{{state}}_religion_plot.png" alt="Religion Plot" />
   {% if religion_data|length != 0 %}
+
+
+  <h2 class="center"  style="text-align:center">{{governor}}'s Meaning Making</h2>
+  <p style="text-align:center">This section analyzes how religion factored in to {{handle}}'s language and reactions during COVID-19</p>
+  <div class="religion-parent">
+  <img class="religion-child" class="center" src="../static/images/{{state}}_religion_plot.png" alt="Religion Plot" />
   <table class="religion-child" id="religion-table" style="width:20%">
     <tr>
       <th>Religion</th>
@@ -148,8 +163,9 @@
       <td>{{religion_data[3][1]}}</td>
     </tr>
   </table>
-  {% else %} {% endif %}
+
 </div>
+  {% else %} {% endif %}
 </body>
 
 </html>
