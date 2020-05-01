@@ -17,6 +17,16 @@ def getstaticdata(state):
         nursinghomes = data[stateindex][4]
         shelterinplace = data[stateindex][5]
         nonessential = data[stateindex][7]
+        if stateofemergency == 0:
+            stateofemergency = "No Data"
+        if elementary == 0:
+            elementary = "No Data"
+        if nursinghomes == 0:
+            nursinghomes = "No Data"
+        if shelterinplace == 0:
+            shelterinplace = "No Data"
+        if nonessential == 0:
+            nonessential = "No Data"
         listoftuple.append(("Declared State of Emergency", stateofemergency))
         listoftuple.append(("K-12 Schools Closed", elementary))
         listoftuple.append(("Visitors Banned From Nursing Homes", nursinghomes))
