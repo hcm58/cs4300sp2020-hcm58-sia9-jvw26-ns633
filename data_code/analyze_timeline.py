@@ -67,7 +67,15 @@ def get_gov_data(query):
         schools = (schools["date"], schools["tweet"])
 
 
-    return [first_mention_result, proportion_mentions, social_distance_result, religion_dict, state_emergency, shelter_place, schools]
+    #get nursing home mentions
+    nursing = get_nursing_home_mention(gov_tweet_lst)
+    if nursing == "No Twitter mention of nursing homes":
+        nursing = ("None", "No Twitter mention of nursing homes")
+    else:
+        nursing = (nursing["date"], nursing["tweet"])
+
+
+    return [first_mention_result, proportion_mentions, social_distance_result, religion_dict, state_emergency, shelter_place, schools, nursing]
 
 #gets all tweets of a given state that include covid19, coronavirus in hashtag or tweet
 def get_direct_mentions(lst):
@@ -152,6 +160,18 @@ def get_shelter_place_mention(lst):
     length = len(result)
     if length == 0:
         return "No Twitter mention of shelter in place"
+    else:
+        return result[(length-1)]
+
+#get shelter in place mention:
+def get_nursing_home_mention(lst):
+    result = []
+    for elem in lst:
+        if "nursing" in elem["tweet"] or "elderly" in elem["tweet"]:
+            result.append(elem)
+    length = len(result)
+    if length == 0:
+        return "No Twitter mention of nursing homes"
     else:
         return result[(length-1)]
 

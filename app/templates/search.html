@@ -60,38 +60,38 @@
     <tr>
       <th>Event</th>
       <th>Date</th>
-      <th>Date Tweeted</th>
       <th>Example Tweet on Event</th>
-    </tr>
-    <tr>
-      <td>First Mention</td>
-      <td></td>
-      <td>{{timeline_data[0][0]}}</td>
-      <td>{{timeline_data[0][1]}}</td>
+      <th>Date Tweeted</th>
     </tr>
     <tr>
       <td>Declares State of Emergency</td>
-      <td></td>
-      <td>{{timeline_data[4][0]}}</td>
+      <td>{{static_data[0][1]}}</td>
       <td>{{timeline_data[4][1]}}</td>
-    </tr>
-    <tr>
-      <td>Social Distancing Mention</td>
-      <td></td>
-      <td>{{timeline_data[2][0]}}</td>
-      <td>{{timeline_data[2][1]}}</td>
+      <td>{{timeline_data[4][0]}}</td>
     </tr>
     <tr>
       <td>Shelter in Place</td>
-      <td></td>
-      <td>{{timeline_data[5][0]}}</td>
+      <td>{{static_data[3][1]}}</td>
       <td>{{timeline_data[5][1]}}</td>
+      <td>{{timeline_data[5][0]}}</td>
     </tr>
     <tr>
       <td>Closed K-12 Schools</td>
-      <td></td>
-      <td>{{timeline_data[6][0]}}</td>
+      <td>{{static_data[1][1]}}</td>
       <td>{{timeline_data[6][1]}}</td>
+      <td>{{timeline_data[6][0]}}</td>
+    </tr>
+    <tr>
+      <td>Closed Visiting Nursing Homes</td>
+      <td>{{static_data[2][1]}}</td>
+      <td>{{timeline_data[7][1]}}</td>
+      <td>{{timeline_data[7][0]}}</td>
+    </tr>
+    <tr>
+      <td>Closed All Non-Essential Businesses</td>
+      <td>{{static_data[4][1]}}</td>
+      <td></td>
+      <td></td>
     </tr>
   </table>
   {% else %} {% endif %}
@@ -122,6 +122,11 @@
                 <td>First Mention of COVID-19 on Twitter</td>
                 <td>{{timeline_data[0][0]}}</td>
                 <td>{{timeline_data[0][1]}}</td>
+              </tr>
+              <tr>
+                <td>Social Distancing Mentions</td>
+                <td>{{timeline_data[2][0]}}</td>
+                <td>{{timeline_data[2][1]}}</td>
               </tr>
               <tr>
                 <td>Percentage of all tweets with direct mentions</td>

@@ -43,8 +43,8 @@ body {
 
 
 #sent-plot {
-  /* margin-top: 50px; */
-  /* margin-bottom: 20px; */
+  margin-top: 50px;
+  margin-bottom: 20px;
 }
 
 table, th, td {
@@ -77,4 +77,8 @@ th, td {
 #religion-table{
   margin-top: 150px;
   margin-left: 50px;
+}
+
+.static_info{
+  background-color: gray;
 }
