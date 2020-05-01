@@ -2,6 +2,7 @@
 body {
   background: url('images/background_img.png');
   background-repeat: no-repeat;
+  font-family: gill-sans;
 }
 
 #title-subheading {
@@ -79,6 +80,14 @@ th, td {
   margin-left: 50px;
 }
 
-.static_info{
-  background-color: gray;
+#percent {
+  text-align: center;
+  padding: 30px;
+  font-size: 40px;
+  font-weight:bold;
+}
+
+.twitter-child {
+  text-align: center;
+  margin: 5px;
 }

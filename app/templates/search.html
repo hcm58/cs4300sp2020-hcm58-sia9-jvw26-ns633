@@ -112,22 +112,23 @@
             </form> -->
 
         {% if timeline_data|length != 0 %}
+
             <h2 class="center" style="text-align:center">Twitter Statistics:</h2>
-<div>
+          <div>
           <div id=twitter-mentions>
-          <div class="twitter-child" style="float:left; width:33%">
-          <h4>Percentage of all tweets with direct mentions</h4>
-          <p>{{data[1][1]}}</p>
+          <div class="twitter-child" style="float:left; width:32.5%">
+          <h4>Percentage of Tweets with Direct Mentions:</h4>
+          <p id="percent">{{data[1][1]}}</p>
           </div>
 
-          <div class="twitter-child" style="float:left; width:33%">
-          <h4>First Mention of COVID-19 on Twitter</h4>
+          <div class="twitter-child" style="float:left; width:32.5%">
+          <h4>First Mention of COVID-19 on Twitter:</h4>
           <p>{{timeline_data[0][0]}}</p>
           <p>{{timeline_data[0][1]}}</p>
           </div>
 
-          <div class="twitter-child" style="float:left; width:33%">
-          <h4>Social Distancing Mentions</h4>
+          <div class="twitter-child" style="float:left; width:32.5%">
+          <h4>Social Distancing Mentions:</h4>
           <p>{{timeline_data[2][0]}}</p>
           <p>{{timeline_data[2][1]}}</p>
           </div>
@@ -135,25 +136,9 @@
           </div>
 </div>
 
-            <!-- <table style="width:60%">
-              <tr>
-                <td>First Mention of COVID-19 on Twitter</td>
-                <td>{{timeline_data[0][0]}}</td>
-                <td>{{timeline_data[0][1]}}</td>
-              </tr>
-              <tr>
-                <td>Social Distancing Mentions</td>
-                <td>{{timeline_data[2][0]}}</td>
-                <td>{{timeline_data[2][1]}}</td>
-              </tr>
-              <tr>
-                <td>Percentage of all tweets with direct mentions</td>
-                <td>{{data[1][1]}}</td>
-                <td></td>
-              </tr>
-            </table> -->
             {% else %} {% endif %}
-  <h3 class="center" style="text-align:center">The Average Sentiment in {{handle}} Twitter Comments</h3>
+
+  <h3 class="head center" style="text-align:center; font-style:italic;">The Average Sentiment in {{handle}} Twitter Comments</h3>
   <p style="text-align:center">This graph demonstrates how {{state}}'s constituents felt towards their governor during the 2020 COVID-19 Pandemic.</p>
   <img id="sent-plot" class="center" src="../static/images/{{state}}_sent_plot1.png" alt="Comment Sentiment Plot" />
 
