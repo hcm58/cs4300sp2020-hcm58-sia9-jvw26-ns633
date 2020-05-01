@@ -9,7 +9,7 @@ from app.irsystem.controllers.make_sent_plots import make_state_comment_plot
 from data_code.editdistance import *
 from data_code.analyze_timeline import *
 from app.irsystem.controllers.make_religion_plots import make_religion_plot
-
+from data_code.getstaticdata import *
 
 project_name = "NJ, Sophia, Jacob, & Haley's Project"
 net_id = "hcm58, sia9, ns633, jvw6"
@@ -28,6 +28,7 @@ def search():
 		religion_data=''
 		handle=''
 		governor=''
+		static_data=''
 	else:
 		governor = getGov(state, statedictionary)
 		handle = getHandle(state, statedictionary)
@@ -47,9 +48,9 @@ def search():
 		#2. social distance mention = [date, tweet, link]
 
 		timeline_data = get_gov_data(state)
-
+		static_data = getstaticdata(state)
 		make_state_comment_plot(state, comment_sentiment[state])
 		make_religion_plot(state, results[3])
 
 
-	return render_template('search.html', governor=governor, handle=handle, name=project_name, netid=net_id, state=state, output_message=output_message, data=output_data, timeline_data=timeline_data, religion_data=religion_data)
+	return render_template('search.html', governor=governor, handle=handle, name=project_name, netid=net_id, state=state, output_message=output_message, data=output_data, timeline_data=timeline_data, religion_data=religion_data, static_data=static_data)
