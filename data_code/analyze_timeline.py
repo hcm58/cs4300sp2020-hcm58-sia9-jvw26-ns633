@@ -74,8 +74,15 @@ def get_gov_data(query):
     else:
         nursing = (nursing["date"], nursing["tweet"])
 
+    #get nonessential mentions
+    nonessential = get_nonessential_mention(gov_tweet_lst)
+    if nonessential == "No Twitter mention of non-essential businesses":
+        nonessential = ("None", "No Twitter mention of non-essential businesses")
+    else:
+        nonessential = (nonessential["date"], nonessential["tweet"])
 
-    return [first_mention_result, proportion_mentions, social_distance_result, religion_dict, state_emergency, shelter_place, schools, nursing]
+
+    return [first_mention_result, proportion_mentions, social_distance_result, religion_dict, state_emergency, shelter_place, schools, nursing, nonessential]
 
 #gets all tweets of a given state that include covid19, coronavirus in hashtag or tweet
 def get_direct_mentions(lst):
@@ -163,7 +170,19 @@ def get_shelter_place_mention(lst):
     else:
         return result[(length-1)]
 
-#get shelter in place mention:
+#get nonessential business mention:
+def get_nonessential_mention(lst):
+    result = []
+    for elem in lst:
+        if "non-essential" in elem["tweet"] or "nonessential" in elem["tweet"]:
+            result.append(elem)
+    length = len(result)
+    if length == 0:
+        return "No Twitter mention of non-essential businesses"
+    else:
+        return result[(length-1)]
+
+#get nursing home mention:
 def get_nursing_home_mention(lst):
     result = []
     for elem in lst:
