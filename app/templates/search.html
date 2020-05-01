@@ -46,11 +46,7 @@
       <img id="profile" class="center" src="../static/profile_images/{{state}}_profile.png" alt="Governor's Profile Picture">
 
     </div>
-
     <h1>{{output_message}}</h1>
-    <!-- </div> -->
-
-
   </form>
 
 
@@ -115,9 +111,31 @@
             {% endif %}
             </form> -->
 
-            {% if timeline_data|length != 0 %}
+        {% if timeline_data|length != 0 %}
             <h2 class="center" style="text-align:center">Twitter Statistics:</h2>
-            <table style="width:60%">
+<div>
+          <div id=twitter-mentions>
+          <div class="twitter-child" style="float:left; width:33%">
+          <h4>Percentage of all tweets with direct mentions</h4>
+          <p>{{data[1][1]}}</p>
+          </div>
+
+          <div class="twitter-child" style="float:left; width:33%">
+          <h4>First Mention of COVID-19 on Twitter</h4>
+          <p>{{timeline_data[0][0]}}</p>
+          <p>{{timeline_data[0][1]}}</p>
+          </div>
+
+          <div class="twitter-child" style="float:left; width:33%">
+          <h4>Social Distancing Mentions</h4>
+          <p>{{timeline_data[2][0]}}</p>
+          <p>{{timeline_data[2][1]}}</p>
+          </div>
+
+          </div>
+</div>
+
+            <!-- <table style="width:60%">
               <tr>
                 <td>First Mention of COVID-19 on Twitter</td>
                 <td>{{timeline_data[0][0]}}</td>
@@ -133,7 +151,7 @@
                 <td>{{data[1][1]}}</td>
                 <td></td>
               </tr>
-            </table>
+            </table> -->
             {% else %} {% endif %}
   <h3 class="center" style="text-align:center">The Average Sentiment in {{handle}} Twitter Comments</h3>
   <p style="text-align:center">This graph demonstrates how {{state}}'s constituents felt towards their governor during the 2020 COVID-19 Pandemic.</p>
