@@ -41,8 +41,8 @@ def get_gov_data(query):
 
     #get specific mentions
     social_distance = get_social_distance_mention(gov_tweet_lst)
-    if social_distance == "No direct mention of social distance":
-        social_distance_result = ("None", "No direct mention of social distance")
+    if social_distance == "No Twitter mention of social distance":
+        social_distance_result = ("None", "No Twitter mention of social distance")
     else:
         social_distance_result = (social_distance["date"], social_distance['tweet'])
         #, social_distance["tweet"], social_distance["link"])
