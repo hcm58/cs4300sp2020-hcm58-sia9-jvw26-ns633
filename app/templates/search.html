@@ -44,43 +44,48 @@
     <div id="results">
       <img id="profile" class="center" src="../static/profile_images/{{state}}_profile.png" alt="Governor's Profile Picture">
     </div>
-
     <h1>{{output_message}}</h1>
-    <!-- </div> -->
-
   </form>
 
+
   {% if timeline_data|length != 0 %}
-  <table style="width:60%">
+  <h2 class="center" style="text-align:center">{{state}}'s Reaction to COVID-19</h2>
+  <table style="width:80%">
     <tr>
-      <th>US Data</th>
-      <th>Governor Data</th>
-      <th>Tweet</th>
+      <th>Event</th>
+      <th>Date</th>
+      <th>Example Tweet on Event</th>
+      <th>Date Tweeted</th>
     </tr>
     <tr>
-      <td>First Mention</td>
-      <td>{{timeline_data[0][0]}}</td>
-      <td><a href="{{timeline_data[0][2]}}">{{timeline_data[0][1]}}</a></td>
+      <td>Declares State of Emergency</td>
+      <td>{{static_data[0][1]}}</td>
+      <td>{{timeline_data[4][1]}}</td>
+      <td>{{timeline_data[4][0]}}</td>
     </tr>
     <tr>
-      <td>Social Distancing Mention</td>
-      <td>{{timeline_data[2][0]}}</td>
-      <td><a href="{{timeline_data[2][2]}}">{{timeline_data[2][1]}}</a></td>
+      <td>Shelter in Place</td>
+      <td>{{static_data[3][1]}}</td>
+      <td>{{timeline_data[5][1]}}</td>
+      <td>{{timeline_data[5][0]}}</td>
     </tr>
     <tr>
-      <td>Mention of God</td>
-      <td>{{timeline_data[3][0]}}</td>
-      <td><a href="{{timeline_data[3][2]}}">{{timeline_data[3][1]}}</a></td>
+      <td>Closed K-12 Schools</td>
+      <td>{{static_data[1][1]}}</td>
+      <td>{{timeline_data[6][1]}}</td>
+      <td>{{timeline_data[6][0]}}</td>
     </tr>
     <tr>
-      <td>Lockdown Mention</td>
-      <td>Governor Stat</td>
-      <td><blockquote class="twitter-tweet"><p lang="en" dir="ltr">Today I announced an expanded testing strategy and aggressive new actions to address outbreaks of <a href="https://twitter.com/hashtag/COVID19?src=hash&amp;ref_src=twsrc%5Etfw">#COVID19</a> in Maryland’s nursing homes and poultry processing plants. <br><br>Read today’s announcements: <a href="https://t.co/ahcgaeVwjY">https://t.co/ahcgaeVwjY</a></p>&mdash; Governor Larry Hogan (@GovLarryHogan) <a href="https://twitter.com/GovLarryHogan/status/1255612875248295936?ref_src=twsrc%5Etfw">April 29, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>  </td>
+      <td>Closed Visiting Nursing Homes</td>
+      <td>{{static_data[2][1]}}</td>
+      <td>{{timeline_data[7][1]}}</td>
+      <td>{{timeline_data[7][0]}}</td>
     </tr>
     <tr>
-      <td>Easing of Lockdown Mention</td>
-      <td>Governor Stat</td>
-      <td><blockquote class="twitter-tweet"><p lang="en" dir="ltr">If we all do our part to rise to this challenge and to meet this moment, we will get through this together. <br><br>For health updates, visit <a href="https://t.co/Shy9A0ubl9">https://t.co/Shy9A0ubl9</a>.<br>For an A-to-Z COVID-19 resource guide and opportunities to help fellow Marylanders, visit <a href="https://t.co/Ip3zZPdN4L">https://t.co/Ip3zZPdN4L</a>. <a href="https://t.co/ciZZAzj0Yq">pic.twitter.com/ciZZAzj0Yq</a></p>&mdash; Governor Larry Hogan (@GovLarryHogan) <a href="https://twitter.com/GovLarryHogan/status/1241821069402669056?ref_src=twsrc%5Etfw">March 22, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> </td>
+      <td>Closed All Non-Essential Businesses</td>
+      <td>{{static_data[4][1]}}</td>
+      <td>{{timeline_data[8][1]}}</td>
+      <td>{{timeline_data[8][0]}}</td>
     </tr>
   </table>
   {% else %} {% endif %}
@@ -104,11 +109,44 @@
             {% endif %}
             </form> -->
 
+        {% if timeline_data|length != 0 %}
+
+            <h2 class="center" style="text-align:center">Twitter Statistics:</h2>
+          <div>
+          <div id=twitter-mentions>
+          <div class="twitter-child" style="float:left; width:32.5%">
+          <h4>Percentage of Tweets with Direct Mentions:</h4>
+          <p id="percent">{{data[1][1]}}</p>
+          </div>
+
+          <div class="twitter-child" style="float:left; width:32.5%">
+          <h4>First Mention of COVID-19 on Twitter:</h4>
+          <p>{{timeline_data[0][0]}}</p>
+          <p>{{timeline_data[0][1]}}</p>
+          </div>
+
+          <div class="twitter-child" style="float:left; width:32.5%">
+          <h4>Social Distancing Mentions:</h4>
+          <p>{{timeline_data[2][0]}}</p>
+          <p>{{timeline_data[2][1]}}</p>
+          </div>
+
+          </div>
+</div>
+
+            {% else %} {% endif %}
+
+  <h3 class="head center" style="text-align:center; font-style:italic;">The Average Sentiment in {{handle}} Twitter Comments</h3>
+  <p style="text-align:center">This graph demonstrates how {{state}}'s constituents felt towards their governor during the 2020 COVID-19 Pandemic.</p>
   <img id="sent-plot" class="center" src="../static/images/{{state}}_sent_plot1.png" alt="Comment Sentiment Plot" />
 
-<div class="religion-parent">
-  <img class="religion-child" id="sent-plot" class="center" src="../static/images/{{state}}_religion_plot.png" alt="Religion Plot" />
   {% if religion_data|length != 0 %}
+
+
+  <h2 class="center"  style="text-align:center">{{governor}}'s Meaning Making</h2>
+  <p style="text-align:center">This section analyzes how religion factored in to {{handle}}'s language and reactions during COVID-19</p>
+  <div class="religion-parent">
+  <img class="religion-child" class="center" src="../static/images/{{state}}_religion_plot.png" alt="Religion Plot" />
   <table class="religion-child" id="religion-table" style="width:20%">
     <tr>
       <th>Religion</th>
@@ -131,8 +169,9 @@
       <td>{{religion_data[3][1]}}</td>
     </tr>
   </table>
-  {% else %} {% endif %}
+
 </div>
+  {% else %} {% endif %}
 </body>
 
 </html>
