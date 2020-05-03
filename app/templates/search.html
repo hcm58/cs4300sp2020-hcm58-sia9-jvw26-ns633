@@ -47,98 +47,116 @@
     <h1>{{output_message}}</h1>
   </form>
 
+  {% if timeline_data|length != 0 %}
+
+          <h2 class="center" style="text-align:center">Twitter Statistics:</h2>
+          <div>
+          <div id=twitter-mentions>
+          <div class="twitter-child" style="float:left; width:32.5%">
+          <h4>Percentage of Tweets with Direct Mentions:</h4>
+          <p id="percent">{{timeline_data[1]}}%</p>
+          </div>
+
+          <div class="twitter-child" style="float:left; width:32.5%">
+          <h4>First Mention of COVID-19 on Twitter:</h4>
+          <p><blockquote class="twitter-tweet">
+          <p lang="en" dir="ltr">
+          <a href="{{timeline_data[0]['link']}}"></a>No tweet found for this event
+          </blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></p>
+          </div>
+
+          <div class="twitter-child" style="float:left; width:32.5%">
+          <h4>First Social Distancing Mention:</h4>
+          <blockquote class="twitter-tweet">
+          <p lang="en" dir="ltr">
+          <a href="{{timeline_data[2]['link']}}"></a>No tweet found for this event
+          </blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          </div>
+
+          </div>
+</div>
+
+<hr>
+<hr>
 
   {% if timeline_data|length != 0 %}
   <h2 class="center" style="text-align:center">{{state}}'s Reaction to COVID-19</h2>
   <table style="width:80%">
     <tr>
       <th>Event</th>
-      <th>Date</th>
-      <th>Example Tweet on Event</th>
+      <th>Actual Date of Event</th>
+      <th>Earliest Tweet about Event</th>
       <th>Date Tweeted</th>
     </tr>
     <tr>
       <td>Declares State of Emergency</td>
       <td>{{static_data[0][1]}}</td>
-      <td>{{timeline_data[4][1]}}</td>
-      <td>{{timeline_data[4][0]}}</td>
+      <td>
+        <blockquote class="twitter-tweet">
+        <p lang="en" dir="ltr">
+        <a href="{{timeline_data[4]['link']}}"></a>No tweet found for this event
+        </blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </td>
+      <td>{{timeline_data[4]["date"]}}</td>
     </tr>
     <tr>
       <td>Shelter in Place</td>
       <td>{{static_data[3][1]}}</td>
-      <td>{{timeline_data[5][1]}}</td>
-      <td>{{timeline_data[5][0]}}</td>
+      <td>
+      <blockquote class="twitter-tweet">
+      <p lang="en" dir="ltr">
+      <a href="{{timeline_data[5]['link']}}"></a>No tweet found for this event
+      </blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </td>
+      <td>{{timeline_data[5]["date"]}}</td>
     </tr>
     <tr>
       <td>Closed K-12 Schools</td>
       <td>{{static_data[1][1]}}</td>
-      <td>{{timeline_data[6][1]}}</td>
-      <td>{{timeline_data[6][0]}}</td>
+      <td>
+      <blockquote class="twitter-tweet">
+      <p lang="en" dir="ltr">
+      <a href="{{timeline_data[6]['link']}}"></a>No tweet found for this event
+      </blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </td>
+      <td>{{timeline_data[6]["date"]}}</td>
     </tr>
     <tr>
       <td>Closed Visiting Nursing Homes</td>
       <td>{{static_data[2][1]}}</td>
-      <td>{{timeline_data[7][1]}}</td>
-      <td>{{timeline_data[7][0]}}</td>
+      <td>
+      <blockquote class="twitter-tweet">
+      <p lang="en" dir="ltr">
+      <a href="{{timeline_data[7]['link']}}"></a>No tweet found for this event
+      </blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </td>
+      <td>{{timeline_data[7]["date"]}}</td>
     </tr>
     <tr>
       <td>Closed All Non-Essential Businesses</td>
       <td>{{static_data[4][1]}}</td>
-      <td>{{timeline_data[8][1]}}</td>
-      <td>{{timeline_data[8][0]}}</td>
+      <td>
+      <blockquote class="twitter-tweet">
+      <p lang="en" dir="ltr">
+      <a href="{{timeline_data[8]['link']}}"></a>No tweet found for this event
+      </blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </td>
+      <td>{{timeline_data[8]["date"]}}</td>
     </tr>
   </table>
   {% else %} {% endif %}
 
+  <hr>
 
-  <!-- <div id="results">
-            <h1>{{output_message}}</h1>
-            {% if data %} -->
-  <!--  <p> <h1>{{output_message}}</h1> </p>
-                <br>
-                <p> <h2>First Twitter Mention of the Virus: <h2>
-                <h2> {{data[0]}} <h2> </p>
-                <br>
-                <p> <h2>Percentage of direct mentions of the disease: <h2>
-                <h2> {{data[1]}}%<h2> </p> -->
 
-  <!-- {% for d in data %}
-                    <br>
-                    <p><h3>{{d[0]}}{{d[1]}}</h3></p>
-                {% endfor %}
-            {% endif %}
-            </form> -->
-
-        {% if timeline_data|length != 0 %}
-
-            <h2 class="center" style="text-align:center">Twitter Statistics:</h2>
-          <div>
-          <div id=twitter-mentions>
-          <div class="twitter-child" style="float:left; width:32.5%">
-          <h4>Percentage of Tweets with Direct Mentions:</h4>
-          <p id="percent">{{data[1][1]}}</p>
-          </div>
-
-          <div class="twitter-child" style="float:left; width:32.5%">
-          <h4>First Mention of COVID-19 on Twitter:</h4>
-          <p>{{timeline_data[0][0]}}</p>
-          <p>{{timeline_data[0][1]}}</p>
-          </div>
-
-          <div class="twitter-child" style="float:left; width:32.5%">
-          <h4>Social Distancing Mentions:</h4>
-          <p>{{timeline_data[2][0]}}</p>
-          <p>{{timeline_data[2][1]}}</p>
-          </div>
-
-          </div>
-</div>
-
-            {% else %} {% endif %}
 
   <h3 class="head center" style="text-align:center; font-style:italic;">The Average Sentiment in {{handle}} Twitter Comments</h3>
   <p style="text-align:center">This graph demonstrates how {{state}}'s constituents felt towards their governor during the 2020 COVID-19 Pandemic.</p>
   <img id="sent-plot" class="center" src="../static/images/{{state}}_sent_plot1.png" alt="Comment Sentiment Plot" />
+
+  {% else %} {% endif %}
+
+  <hr>
 
   {% if religion_data|length != 0 %}
 

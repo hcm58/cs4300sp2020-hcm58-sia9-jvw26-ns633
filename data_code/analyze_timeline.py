@@ -9,7 +9,8 @@ twitter_info_list = create_twitter_list()
 
 #change to dictionary format for all tweets, with each column titled (maybe not ones we don't need)
 def get_gov_data(query):
-    gov_tweet_lst = []
+    ## get all the tweets for the governor
+    gov_tweet_lst_unsorted = []
     with open("data_code/governor_data/" + query + ".csv", encoding = 'utf-8') as file:
         reader = csv.reader(file, delimiter=",")
         line_count = 0
@@ -17,7 +18,6 @@ def get_gov_data(query):
             d = {}
             if line_count == 0:
                 columns = line
-                print(columns)
                 line_count += 1
             else:
                 d["id"] = line[0]
@@ -31,58 +31,41 @@ def get_gov_data(query):
                 d["hashtags"] = line[17]
                 d["link"] = line[19]
                 line_count += 1
-                gov_tweet_lst.append(d)
+                gov_tweet_lst_unsorted.append(d)
 
+    #sort tweets in ascending order
+    gov_tweet_lst = sorted(gov_tweet_lst_unsorted, key=lambda k: k["date"])
+
+    #instantiate list of results
+    list_of_results = []
+
+    #get direct mentions of crisis
     direct_mentions = get_direct_mentions(gov_tweet_lst)
+
+    #get first mention, append to data list
     first_mention = get_first_mention(direct_mentions)
+    list_of_results.append(first_mention)
+
     proportion_mentions = get_proportion_mentions(gov_tweet_lst,direct_mentions)
-    first_mention_result = (first_mention["date"], first_mention["tweet"], first_mention["link"])
-    religion_dict=get_religion(gov_tweet_lst, "data_code/religious_words.csv")
+    list_of_results.append(proportion_mentions)
 
-    #get specific mentions
     social_distance = get_social_distance_mention(gov_tweet_lst)
-    if social_distance == "No Twitter mention of social distance":
-        social_distance_result = ("None", "No Twitter mention of social distance")
-    else:
-        social_distance_result = (social_distance["date"], social_distance['tweet'])
-        #, social_distance["tweet"], social_distance["link"])
+    list_of_results.append(social_distance)
 
-    state_emergency = get_state_emergency_mention(gov_tweet_lst)
-    if state_emergency == "No Twitter mention of state of emergency":
-        state_emergency = ("None", "No Twitter mention of state of emergency")
-    else:
-        state_emergency = (state_emergency["date"], state_emergency["tweet"])
+    religion_dict=get_religion(gov_tweet_lst, "data_code/religious_words.csv")
+    list_of_results.append(religion_dict)
 
-    shelter_place = get_shelter_place_mention(gov_tweet_lst)
-    if shelter_place == "No Twitter mention of shelter in place":
-        shelter_place = ("None", "No Twitter mention of shelter in place")
-    else:
-        shelter_place = (shelter_place["date"], shelter_place["tweet"])
+    list_of_results.append(get_state_emergency_mention(gov_tweet_lst))
+    list_of_results.append(get_shelter_place_mention(gov_tweet_lst))
+    list_of_results.append(get_schools_mention(direct_mentions))
+    list_of_results.append(get_nursing_home_mention(gov_tweet_lst))
+    list_of_results.append(get_nonessential_mention(gov_tweet_lst))
 
-    #get school mentions
-    schools = get_schools_mention(direct_mentions)
-    if schools == "No Twitter mention of schools":
-        schools = ("None", "No Twitter mention of schools")
-    else:
-        schools = (schools["date"], schools["tweet"])
+    #first mention, proportion, social distance, religion, state emergency, shelter place, schools, nursing, nonessential
+    return list_of_results
 
-
-    #get nursing home mentions
-    nursing = get_nursing_home_mention(gov_tweet_lst)
-    if nursing == "No Twitter mention of nursing homes":
-        nursing = ("None", "No Twitter mention of nursing homes")
-    else:
-        nursing = (nursing["date"], nursing["tweet"])
-
-    #get nonessential mentions
-    nonessential = get_nonessential_mention(gov_tweet_lst)
-    if nonessential == "No Twitter mention of non-essential businesses":
-        nonessential = ("None", "No Twitter mention of non-essential businesses")
-    else:
-        nonessential = (nonessential["date"], nonessential["tweet"])
-
-
-    return [first_mention_result, proportion_mentions, social_distance_result, religion_dict, state_emergency, shelter_place, schools, nursing, nonessential]
+#define an empty tweet dict
+empty_tweet = {"id": "N/A", "date": "N/A", "time": "N/A", "username": "N/A", "tweet": "No Tweet Found", "mentions": "N/A", "urls": "N/A", "photos":"N/A", "hashtags": "N/A", "link": ""}
 
 #gets all tweets of a given state that include covid19, coronavirus in hashtag or tweet
 def get_direct_mentions(lst):
@@ -94,31 +77,24 @@ def get_direct_mentions(lst):
 
 #takes in direct-mentions, returns the last element in the lst, assumed to be the earliest
 def get_first_mention(lst):
-    result = lst[len(lst)-1]
-#    first_mention_date = first_mention["date"]
-    return result
+    return lst[0]
 
 #takes in state list of total tweets and list of direct mentions, returns percentage of gov_tweet_lst
 #that mention coronavirus
 def get_proportion_mentions(state_lst, direct_mentions_lst):
-    result = len(direct_mentions_lst)/len(state_lst) * 100
-    return result
+    result = (len(direct_mentions_lst)/len(state_lst))
+    result = result * 100
+    return round(result,1)
 
 def get_social_distance_mention(lst):
     result = []
     for elem in lst:
         if "social distance" in elem["tweet"] or "social distancing" in elem["tweet"]:
             result.append(elem)
-    length = len(result)
-    if length == 0:
-        return "No Twitter mention of social distance"
+    if len(result) == 0:
+        return empty_tweet
     else:
-        tweet = result[(length-1)]
-        return [tweet["date"], tweet["tweet"], tweet["link"]]
-
-#takes in all tweets by the governor, returns score measuring christianity religiousness
-#def get_religious_score(lst):
-#    for elem in lst:
+        return result[0]
 
 #get school mentions
 def get_schools_mention(lst):
@@ -128,24 +104,9 @@ def get_schools_mention(lst):
             result.append(elem)
     length = len(result)
     if length == 0:
-        return "No Twitter mention of schools"
+        return empty_tweet
     else:
-        return result[(length-1)]
-
-
-#rolling average
-def get_rolling_avg(lst):
-    last_seven = 0
-    lst.reverse()
-    for date, tf in lst:
-      #  print(tf)
-        if tf == True and last_seven < 7:
-            last_seven += 1
-        elif tf == False and last_seven > 0:
-            last_seven -= 1
-      #  print(last_seven)
-        curr_avg = last_seven/7
-        print(curr_avg)
+        return result[0]
 
 #get state of emergency mention:
 def get_state_emergency_mention(lst):
@@ -155,9 +116,9 @@ def get_state_emergency_mention(lst):
             result.append(elem)
     length = len(result)
     if length == 0:
-        return "No Twitter mention of state of emergency"
+        return empty_tweet
     else:
-        return result[(length-1)]
+        return result[0]
 
 #get shelter in place mention:
 def get_shelter_place_mention(lst):
@@ -167,9 +128,9 @@ def get_shelter_place_mention(lst):
             result.append(elem)
     length = len(result)
     if length == 0:
-        return "No Twitter mention of shelter in place"
+        return empty_tweet
     else:
-        return result[(length-1)]
+        return result[0]
 
 #get nonessential business mention:
 def get_nonessential_mention(lst):
@@ -179,9 +140,9 @@ def get_nonessential_mention(lst):
             result.append(elem)
     length = len(result)
     if length == 0:
-        return "No Twitter mention of non-essential businesses"
+        return empty_tweet
     else:
-        return result[(length-1)]
+        return result[0]
 
 #get nursing home mention:
 def get_nursing_home_mention(lst):
@@ -191,9 +152,9 @@ def get_nursing_home_mention(lst):
             result.append(elem)
     length = len(result)
     if length == 0:
-        return "No Twitter mention of nursing homes"
+        return empty_tweet
     else:
-        return result[(length-1)]
+        return result[0]
 
 #get religious mentions
 def get_religion(tweet_list, religion_data):

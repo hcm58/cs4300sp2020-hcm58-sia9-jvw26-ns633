@@ -36,21 +36,15 @@ def search():
 		output_message = state + " - " + governor + " (" +party+  ") - " + handle
 
 		output_data = []
-		results = get_gov_data(state)
-	#	output_data.append(("First Mention Date: ", results[0]))
-	#	output_data.append(("Percentage of all tweets with direct mentions: ", (str(round(results[1],1)) + "%"))
-	#	output_data.append(("Mention of Social Distance: ", results[2]))
 
-		religion_data = results[3]
-		#output data looks like
-		#0. first mention = [date, tweet, link]
-		#1. proportion mention = int
-		#2. social distance mention = [date, tweet, link]
-
+		#format of timeline_data
+		#first mention, proportion, social distance, religion, state emergency, shelter place, schools, nursing, nonessential
 		timeline_data = get_gov_data(state)
+		religion_data = timeline_data[3]
 		static_data = getstaticdata(state)
+
 		make_state_comment_plot(state, comment_sentiment[state])
-		make_religion_plot(state, results[3])
+		make_religion_plot(state, religion_data)
 
 
 	return render_template('search.html', governor=governor, handle=handle, name=project_name, netid=net_id, state=state, output_message=output_message, data=output_data, timeline_data=timeline_data, religion_data=religion_data, static_data=static_data)
