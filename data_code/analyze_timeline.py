@@ -44,7 +44,8 @@ def get_gov_data(query):
     if social_distance == "No Twitter mention of social distance":
         social_distance_result = ("None", "No Twitter mention of social distance")
     else:
-        social_distance_result = (social_distance["date"], social_distance['tweet'])
+        print(social_distance)
+        social_distance_result = (social_distance["date"], social_distance["tweet"])
         #, social_distance["tweet"], social_distance["link"])
 
     state_emergency = get_state_emergency_mention(gov_tweet_lst)
@@ -113,8 +114,7 @@ def get_social_distance_mention(lst):
     if length == 0:
         return "No Twitter mention of social distance"
     else:
-        tweet = result[(length-1)]
-        return [tweet["date"], tweet["tweet"], tweet["link"]]
+        return result[(length-1)]
 
 #takes in all tweets by the governor, returns score measuring christianity religiousness
 #def get_religious_score(lst):
