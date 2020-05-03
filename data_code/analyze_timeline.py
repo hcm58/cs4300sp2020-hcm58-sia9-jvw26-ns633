@@ -102,8 +102,8 @@ def get_first_mention(lst):
 #takes in state list of total tweets and list of direct mentions, returns percentage of gov_tweet_lst
 #that mention coronavirus
 def get_proportion_mentions(state_lst, direct_mentions_lst):
-    result = len(direct_mentions_lst)/len(state_lst) * 100
-    return result
+    result = round(len(direct_mentions_lst)/len(state_lst) * 100, 2)
+    return str(result) + "%"
 
 def get_social_distance_mention(lst):
     result = []
