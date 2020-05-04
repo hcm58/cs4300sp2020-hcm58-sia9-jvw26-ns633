@@ -1,0 +1,193 @@
+
+body {
+  font-family: gill-sans;
+}
+
+.header1{
+  background: url('images/background_img.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 800px;
+}
+
+.title{
+  text-align: left;
+  font-size: 56px; 
+  font-family:Futura; 
+  color: red;
+  padding-left: 5%;
+  padding-top: 50px;
+  margin: auto;
+}
+
+#title-subheading{
+  text-align: left;
+  font-size: 15px; 
+  font-family:Futura; 
+  color: black;
+  padding-left: 5.5%;
+  padding-bottom: 500px;
+}
+
+.searching {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+#input {
+  width: 100%;
+  border: 3px solid #00B4CC;
+  border-right: none;
+  padding: 5px;
+  height: 36px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+#input:focus{
+  color: #00B4CC;
+}
+
+#inputbutton {
+  width: 44px;
+  height: 36px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 30%;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  padding-left: 10%;
+  padding-top: 30px;
+  /* transform: translate(-50%, -50%); */
+}
+
+#profile{
+  border-radius: 50%;
+  width: 20%;
+  /* margin-left: 320px; */
+  padding-left: 10px;
+  text-align: center;
+  display: block;
+  margin: auto;
+
+}
+
+#pro{
+  font-size: 35px;
+  text-align: center;
+}
+
+.boxx{
+  background-color: #BDC9B8;
+  margin-left: 300px;
+  margin-right: 300px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border: 3px solid black;
+  border-radius: 5px 0 0 5px;
+  border-radius: 25px;
+}
+
+.twitter{
+  font-size: 50px;
+  text-align: center;
+}
+
+#twitter-mentions{
+  font-size: 25px;
+  text-align: center;
+}
+
+th {background: #BDC9B8}
+tr:nth-child(odd) {background: #CCC}
+tr:nth-child(even) {background: #FFF}
+
+table {
+  margin-left:auto;
+  margin-right:auto;
+}
+
+th, td {
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 20px;
+}
+
+.twitter-stat {
+  text-align: center;
+  margin: 5px;
+}
+
+.twitter-child1 {
+  margin: 5px;
+  display: block;
+  margin: auto;
+  background: yellow;
+}
+
+.twitter-tweet{
+  display: block;
+  margin: auto;
+}
+
+.twitter-child2 {
+  margin: 5px;
+  display: block;
+  margin: auto;
+  background: #00B4CC;
+}
+
+#sent-plot {
+  margin-top: 5px;
+  margin-bottom: 20px;
+  display: block;
+  margin: auto;
+}
+
+.sentiment{
+  font-size: 40px;
+}
+
+.sentiment1{
+  font-size: 20px;
+}
+
+.religion-parent {
+  padding: 20px;
+  margin-left: 200px;
+}
+
+.religion-child {
+  width: 50%;
+  float: left;
+}
+
+#religion-table{
+  margin-top: 150px;
+  margin-left: 50px;
+}
+
+#percent {
+  text-align: center;
+  padding: 30px;
+  font-size: 40px;
+  font-weight:bold;
+}
+
+hr {
+  border: 1.5px solid black;
+}

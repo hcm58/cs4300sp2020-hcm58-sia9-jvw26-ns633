@@ -1,9 +1,10 @@
 <html>
 
 <head>
-  <link rel="stylesheet" href="/static/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="/static/bootstrap.min.css">
   <link rel="stylesheet" href="/static/search_style.css">
-  <link rel="stylesheet" href="/static/main.css">
+  <link rel="stylesheet" href="/static/main.css"> -->
+  <link rel="stylesheet" href="/static/main2.css">
   <script type="text/javascript" href="/static/javascript.js"></script>
   <title>COVID-19 Politicians</title>
   <link rel="icon" href="/static/images/title_icon.png" type="image/title_icon.png">
@@ -11,75 +12,118 @@
 
 <body>
   <!-- <div id="header"> -->
-  <div class="topcorner">
-    <p style="color:white">Project Name: {{ name }}</p>
-    <p style="color:white">Student Name: ({{ netid }})</p>
+  <div class="header1">
+
+    <div class="topcorner">
+      <p style="color:white">Project Name: {{ name }}</p>
+      <p style="color:white">Student Name: ({{ netid }})</p>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div id="header">
+      <form class="form-parent form-inline global-search">
+        <div>
+          <h1 class="title">
+            Governors on Corona
+          </h1>
+          <h2 id='title-subheading'> Discover how your governor responded to the 2020 COVID-19 Pandemic. </h2>
+        </div>
+
+        <div class="wrap">
+          <div class="searching">
+            <input id="input" type="text" name="search" class="form-control" placeholder="Enter State or Name of Governor">
+            <button onclick="show()" type="submit" class="btn btn-info" id="inputbutton"> Go!
+              <i class="fa fa-search"></i>
+            </button>
+
+          </div>
+
+        </div>
+
+      </form>
+    </div>
+
   </div>
 
-  <div id="header">
-    <form class="form-parent form-inline global-search">
-      <div class="form-child">
-        <h1 style="font-size: 50px; font-family:Futura; color: red">
-          Governors on Corona
-          <span style="color: #EA4335; ">
-        </h1>
-        <h2 id='title-subheading' style="font-size: 15px;"> Discover how your governor responded to the 2020 COVID-19 Pandemic. </h2>
+  <br>
+  <br>
+
+
+  <div class="boxx">
+    <form class="form-inline global-search">
+      <div id="results">
+        <img id="profile" class="center" src="../static/profile_images/{{state}}_profile.png" alt="Governor's Profile Picture">
       </div>
-
-      <br>
-      <br>
-
-      <div class="form-child">
-        <div class="form-group">
-          <input id="input" type="text" name="search" class="form-control" placeholder="Enter State or Name of Governor">
-        </div>
-        <button onclick="show()" type="submit" class="btn btn-info"> Go! </button>
-      </div>
-
+      <h1 id="pro">{{output_message}}</h1>
     </form>
   </div>
 
 
-  <form class="form-inline global-search">
-    <div id="results">
-      <img id="profile" class="center" src="../static/profile_images/{{state}}_profile.png" alt="Governor's Profile Picture">
-    </div>
-    <h1>{{output_message}}</h1>
-  </form>
-
   {% if timeline_data|length != 0 %}
 
-          <h2 class="center" style="text-align:center">Twitter Statistics:</h2>
-          <div>
-          <div id=twitter-mentions>
-          <div class="twitter-child" style="float:left; width:32.5%">
-          <h4>Percentage of Tweets with Direct Mentions:</h4>
-          <p id="percent">{{timeline_data[1]}}%</p>
-          </div>
+  <br>
 
-          <div class="twitter-child" style="float:left; width:32.5%">
-          <h4>First Mention of COVID-19 on Twitter:</h4>
-          <p><blockquote class="twitter-tweet">
+
+  <hr>
+
+  <h2 class="twitter">Twitter Statistics:</h2>
+
+
+  <br>
+
+  <div>
+    <div id=twitter-mentions>
+      <div class="twitter-stat boxx" style="width: 40%; height: 10%; display: block; margin: auto; background-color:#BDC9B8;">
+        <h4>Percentage of Tweets with Direct Mentions: {{timeline_data[1]}}%</h4>
+      </div>
+      <br>
+      <div class="twitter-child1 boxx" style="width: 50%; display: block; margin: auto; background-color:  #BDC9B8;">
+        <h4>First Mention of COVID-19 on Twitter:</h4>
+        <p>
+          <blockquote class="twitter-tweet" id="first">
+            <p lang="en" dir="ltr">
+              <a href="{{timeline_data[0]['link']}}"></a>No tweet found for this event
+          </blockquote>
+          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          </p>
+      </div>
+
+      <br>
+
+      <div class="twitter-child2 boxx" style="width: 50%; display: block; margin: auto; background-color:#BDC9B8;">
+        <h4>First Social Distancing Mention:</h4>
+        <blockquote class="twitter-tweet" id="second">
           <p lang="en" dir="ltr">
-          <a href="{{timeline_data[0]['link']}}"></a>No tweet found for this event
-          </blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></p>
-          </div>
+            <a href="{{timeline_data[2]['link']}}"></a>No tweet found for this event
+        </blockquote>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
 
-          <div class="twitter-child" style="float:left; width:32.5%">
-          <h4>First Social Distancing Mention:</h4>
-          <blockquote class="twitter-tweet">
-          <p lang="en" dir="ltr">
-          <a href="{{timeline_data[2]['link']}}"></a>No tweet found for this event
-          </blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-          </div>
+    </div>
+  </div>
 
-          </div>
-</div>
+  <br>
 
-<hr>
-<hr>
 
-  <h2 class="center" style="text-align:center">{{state}}'s Reaction to COVID-19</h2>
+  <hr>
+
+  <h2 class="twitter">{{state}}'s Reaction to COVID-19</h2>
+
+  <br>
+
   <table style="width:80%">
     <tr>
       <th>Event</th>
@@ -92,9 +136,10 @@
       <td>{{static_data[0][1]}}</td>
       <td>
         <blockquote class="twitter-tweet">
-        <p lang="en" dir="ltr">
-        <a href="{{timeline_data[4]['link']}}"></a>No tweet found for this event
-        </blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          <p lang="en" dir="ltr">
+            <a href="{{timeline_data[4]['link']}}"></a>No tweet found for this event
+        </blockquote>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
       </td>
       <td>{{timeline_data[4]["date"]}}</td>
     </tr>
@@ -102,10 +147,11 @@
       <td>Shelter in Place</td>
       <td>{{static_data[3][1]}}</td>
       <td>
-      <blockquote class="twitter-tweet">
-      <p lang="en" dir="ltr">
-      <a href="{{timeline_data[5]['link']}}"></a>No tweet found for this event
-      </blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <blockquote class="twitter-tweet">
+          <p lang="en" dir="ltr">
+            <a href="{{timeline_data[5]['link']}}"></a>No tweet found for this event
+        </blockquote>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
       </td>
       <td>{{timeline_data[5]["date"]}}</td>
     </tr>
@@ -113,10 +159,11 @@
       <td>Closed K-12 Schools</td>
       <td>{{static_data[1][1]}}</td>
       <td>
-      <blockquote class="twitter-tweet">
-      <p lang="en" dir="ltr">
-      <a href="{{timeline_data[6]['link']}}"></a>No tweet found for this event
-      </blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <blockquote class="twitter-tweet">
+          <p lang="en" dir="ltr">
+            <a href="{{timeline_data[6]['link']}}"></a>No tweet found for this event
+        </blockquote>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
       </td>
       <td>{{timeline_data[6]["date"]}}</td>
     </tr>
@@ -124,10 +171,11 @@
       <td>Closed Visiting Nursing Homes</td>
       <td>{{static_data[2][1]}}</td>
       <td>
-      <blockquote class="twitter-tweet">
-      <p lang="en" dir="ltr">
-      <a href="{{timeline_data[7]['link']}}"></a>No tweet found for this event
-      </blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <blockquote class="twitter-tweet">
+          <p lang="en" dir="ltr">
+            <a href="{{timeline_data[7]['link']}}"></a>No tweet found for this event
+        </blockquote>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
       </td>
       <td>{{timeline_data[7]["date"]}}</td>
     </tr>
@@ -135,83 +183,82 @@
       <td>Closed All Non-Essential Businesses</td>
       <td>{{static_data[4][1]}}</td>
       <td>
-      <blockquote class="twitter-tweet">
-      <p lang="en" dir="ltr">
-      <a href="{{timeline_data[8]['link']}}"></a>No tweet found for this event
-      </blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <blockquote class="twitter-tweet">
+          <p lang="en" dir="ltr">
+            <a href="{{timeline_data[8]['link']}}"></a>No tweet found for this event
+        </blockquote>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
       </td>
       <td>{{timeline_data[8]["date"]}}</td>
     </tr>
   </table>
   {% else %} {% endif %}
 
-  <hr>
+  <br>
 
-        {% if timeline_data|length != 0 %}
+  <hr> {% if timeline_data|length != 0 %}
 
-            <h2 class="center" style="text-align:center">Twitter Statistics:</h2>
-          <div>
-          <div id=twitter-mentions>
-          <div class="twitter-child" style="float:left; width:32.5%">
-          <h4>Percentage of Tweets with Direct Mentions:</h4>
-          <p id="percent">{{timeline_data[1]}}</p>
-          </div>
+  <!-- <h2 class="center" style="text-align:center">Twitter Statistics:</h2>
+  <div>
+    <div id=twitter-mentions>
+      <div class="twitter-child" style="float:left; width:32.5%">
+        <h4>Percentage of Tweets with Direct Mentions:</h4>
+        <p id="percent">{{timeline_data[1]}}</p>
+      </div>
 
-          <div class="twitter-child" style="float:left; width:32.5%">
-          <h4>First Mention of COVID-19 on Twitter:</h4>
-          <p>{{timeline_data[0][0]}}</p>
-          <p>{{timeline_data[0][1]}}</p>
-          </div>
+      <div class="twitter-child" style="float:left; width:32.5%">
+        <h4>First Mention of COVID-19 on Twitter:</h4>
+        <p>{{timeline_data[0][0]}}</p>
+        <p>{{timeline_data[0][1]}}</p>
+      </div>
 
-          <div class="twitter-child" style="float:left; width:32.5%">
-          <h4>Social Distancing Mentions:</h4>
-          <p>{{timeline_data[2][0]}}</p>
-          <p>{{timeline_data[2][1]}}</p>
-          </div>
+      <div class="twitter-child" style="float:left; width:32.5%">
+        <h4>Social Distancing Mentions:</h4>
+        <p>{{timeline_data[2][0]}}</p>
+        <p>{{timeline_data[2][1]}}</p>
+      </div>
 
-          </div>
-</div>
-
-
-  <h3 class="head center" style="text-align:center; font-style:italic;">The Average Sentiment in {{handle}} Twitter Comments</h3>
-  <p style="text-align:center">This graph demonstrates how {{state}}'s constituents felt towards their governor during the 2020 COVID-19 Pandemic.</p>
-  <img id="sent-plot" class="center" src="../static/images/{{state}}_sent_plot1.png" alt="Comment Sentiment Plot" />
-
-  {% else %} {% endif %}
-
-  <hr>
-
-  {% if religion_data|length != 0 %}
+    </div>
+  </div> -->
 
 
-  <h2 class="center"  style="text-align:center">{{governor}}'s Meaning Making</h2>
-  <p style="text-align:center">This section analyzes how religion factored in to {{handle}}'s language and reactions during COVID-19</p>
+  <h3 class="head center sentiment" style="text-align:center; font-style:italic;">The Average Sentiment in {{handle}} Twitter Comments</h3>
+  <p class="head center sentiment1" style="text-align:center">This graph demonstrates how {{state}}'s constituents felt towards their governor during the 2020 COVID-19 Pandemic.</p>
+  <img id="sent-plot" class="center" src="../static/images/{{state}}_sent_plot1.png" alt="Comment Sentiment Plot" /> {% else %} {% endif %}
+
+  <br>
+
+  <hr> {% if religion_data|length != 0 %}
+
+
+  <h2 class="center sentiment" style="text-align:center">{{governor}}'s Meaning Making</h2>
+  <p class="head center sentiment1" style="text-align:center">This section analyzes how religion factored in to {{handle}}'s language and reactions during COVID-19</p>
   <div class="religion-parent">
-  <img class="religion-child" class="center" src="../static/images/{{state}}_religion_plot.png" alt="Religion Plot" />
-  <table class="religion-child" id="religion-table" style="width:20%">
-    <tr>
-      <th>Religion</th>
-      <th>Number of Mentions</th>
-    </tr>
-    <tr>
-      <td>Christian</td>
-      <td>{{religion_data[0][1]}}</td>
-    </tr>
-    <tr>
-      <td>Jewish</td>
-      <td>{{religion_data[1][1]}}</td>
-    </tr>
-    <tr>
-      <td>Muslim</td>
-      <td>{{religion_data[2][1]}}</td>
-    </tr>
-    <tr>
-      <td>Neutral</td>
-      <td>{{religion_data[3][1]}}</td>
-    </tr>
-  </table>
+    <img class="religion-child" class="center" src="../static/images/{{state}}_religion_plot.png" alt="Religion Plot" />
+    <table class="religion-child" id="religion-table" style="width:20%">
+      <tr>
+        <th>Religion</th>
+        <th>Number of Mentions</th>
+      </tr>
+      <tr>
+        <td>Christian</td>
+        <td>{{religion_data[0][1]}}</td>
+      </tr>
+      <tr>
+        <td>Jewish</td>
+        <td>{{religion_data[1][1]}}</td>
+      </tr>
+      <tr>
+        <td>Muslim</td>
+        <td>{{religion_data[2][1]}}</td>
+      </tr>
+      <tr>
+        <td>Neutral</td>
+        <td>{{religion_data[3][1]}}</td>
+      </tr>
+    </table>
 
-</div>
+  </div>
   {% else %} {% endif %}
 </body>
 
