@@ -8,7 +8,7 @@ def make_state_comment_plot(state, avg_by_day):
     print(len(lis))
 
     if len(lis) < 2:
-        return True
+        return 'none'
     else:
         new_lis = []
         for tup in lis:
@@ -39,4 +39,4 @@ def make_state_comment_plot(state, avg_by_day):
         link = 'app/static/images/' + state + '_sent_plot1.png'
 
         fig.savefig(link)
-        return False
+        return 'plot'

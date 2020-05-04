@@ -191,35 +191,13 @@
 
   <br>
   <hr>
-  <!-- <h2 class="center" style="text-align:center">Twitter Statistics:</h2>
-  <div>
-    <div id=twitter-mentions>
-      <div class="twitter-child" style="float:left; width:32.5%">
-        <h4>Percentage of Tweets with Direct Mentions:</h4>
-        <p id="percent">{{timeline_data[1]}}</p>
-      </div>
-
-      <div class="twitter-child" style="float:left; width:32.5%">
-        <h4>First Mention of COVID-19 on Twitter:</h4>
-        <p>{{timeline_data[0][0]}}</p>
-        <p>{{timeline_data[0][1]}}</p>
-      </div>
-
-      <div class="twitter-child" style="float:left; width:32.5%">
-        <h4>Social Distancing Mentions:</h4>
-        <p>{{timeline_data[2][0]}}</p>
-        <p>{{timeline_data[2][1]}}</p>
-      </div>
-
-    </div>
-  </div> -->
 
   <h3 class="head center sentiment" style="text-align:center; font-style:italic;">The Average Sentiment in {{handle}} Twitter Comments</h3>
   <p class="head center sentiment1" style="text-align:center">This graph demonstrates how {{state}}'s constituents felt towards their governor during the 2020 COVID-19 Pandemic.</p>
 
-  {% if exception==False %}
-  <img id="sent-plot" class="center" src="../static/images/{{state}}_sent_plot1.png" alt="Comment Sentiment Plot" /> {% else %}   <p class="head center sentiment1" style="text-align:center; margin-left:50px;margin-right:50px;background-color:#BDC9B8;padding:10px;font-style:italic;">{{handle}} does not have enough popular comments for a sentiment plot.</p>
- {% endif %}
+  {% if exception=='plot' %}
+  <img id="sent-plot" class="center" src="../static/images/{{state}}_sent_plot1.png" alt="Comment Sentiment Plot" /> {% elif exception=="none" %}   <p class="head center sentiment1" style="text-align:center; margin-left:50px;margin-right:50px;background-color:#BDC9B8;padding:10px;font-style:italic;">{{handle}} does not have enough popular comments for a sentiment plot.</p>
+ {% else %} {% endif %}
 
   <br> {% if religion_data|length != 0 %}
   <hr>

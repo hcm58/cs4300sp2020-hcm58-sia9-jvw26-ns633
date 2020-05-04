@@ -29,6 +29,7 @@ def search():
 		handle=''
 		governor=''
 		static_data=''
+		exception=''
 	else:
 		governor = getGov(state, statedictionary)
 		handle = getHandle(state, statedictionary)
