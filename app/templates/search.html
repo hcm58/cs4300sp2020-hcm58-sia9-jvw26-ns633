@@ -196,7 +196,7 @@
   </table>
   {% else %} {% endif %}
 
-  <br> {% if timeline_data|length != 0 %}
+  <br>
   <hr>
   <!-- <h2 class="center" style="text-align:center">Twitter Statistics:</h2>
   <div>
@@ -221,10 +221,12 @@
     </div>
   </div> -->
 
-
   <h3 class="head center sentiment" style="text-align:center; font-style:italic;">The Average Sentiment in {{handle}} Twitter Comments</h3>
   <p class="head center sentiment1" style="text-align:center">This graph demonstrates how {{state}}'s constituents felt towards their governor during the 2020 COVID-19 Pandemic.</p>
-  <img id="sent-plot" class="center" src="../static/images/{{state}}_sent_plot1.png" alt="Comment Sentiment Plot" /> {% else %} {% endif %}
+
+  {% if exception==False %}
+  <img id="sent-plot" class="center" src="../static/images/{{state}}_sent_plot1.png" alt="Comment Sentiment Plot" /> {% else %}   <p class="head center sentiment1" style="text-align:center; margin-left:50px;margin-right:50px;background-color:#BDC9B8;padding:10px;font-style:italic;">{{handle}} does not have enough popular comments for a sentiment plot.</p>
+ {% endif %}
 
   <br> {% if religion_data|length != 0 %}
   <hr>
