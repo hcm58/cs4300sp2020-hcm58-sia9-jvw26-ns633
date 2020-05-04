@@ -58,7 +58,12 @@ def min_edit_query(searchterm):
         editscore = edit_distance(searchterm, stategov)
         if editscore ==0:
             return stategov
-        else:
+        elif editscore <= 3:
             editscorelist.append(editscore)
-    minpos = editscorelist.index(min(editscorelist))
-    return listofqueries[minpos]
+        else:
+            editscorelist.append(99)
+    if min(editscorelist) == 99:
+        return "no match"
+    else:
+        minpos = editscorelist.index(min(editscorelist))
+        return listofqueries[minpos]

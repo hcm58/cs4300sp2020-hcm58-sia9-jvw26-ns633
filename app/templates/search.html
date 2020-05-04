@@ -64,9 +64,11 @@
 
   <div>
     <form class="form-inline global-search">
+      {% if state != "no match" %}
       <div id="results">
         <img id="profile" class="center" src="../static/profile_images/{{state}}_profile.png" alt="Governor's Profile Picture">
       </div>
+      {% else %} {% endif %}
       {% if output_message|length != 0 %}
       <h1 id="pro">{{output_message}}</h1>
       {% else %} {% endif %}
@@ -126,6 +128,11 @@
   <br>
 
   <table style="width:80%">
+    <colgroup>
+      <col class="e">
+      <col class="d">
+      <col>
+    </colgroup>
     <tr>
       <th>Event</th>
       <th>Actual Date of Event</th>
