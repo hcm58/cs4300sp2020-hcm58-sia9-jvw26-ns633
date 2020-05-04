@@ -117,10 +117,10 @@
 
   <br>
 
-
   <hr>
 
-  <h2 class="twitter">{{state}}'s Reaction to COVID-19</h2>
+  <h3 class="head center sentiment" style="text-align:center; font-style:italic;">{{state}}'s Reaction to COVID-19</h3>
+  <p class="head center sentiment1" style="text-align:center">This section includes major events in the COVID-19 crisis, when {{state}} enacted them, and an example tweet from {{handle}} about the event.</p>
 
   <br>
 
@@ -129,7 +129,6 @@
       <th>Event</th>
       <th>Actual Date of Event</th>
       <th>Earliest Tweet about Event</th>
-      <th>Date Tweeted</th>
     </tr>
     <tr>
       <td>Declares State of Emergency</td>
@@ -141,7 +140,6 @@
         </blockquote>
         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
       </td>
-      <td>{{timeline_data[4]["date"]}}</td>
     </tr>
     <tr>
       <td>Shelter in Place</td>
@@ -153,7 +151,6 @@
         </blockquote>
         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
       </td>
-      <td>{{timeline_data[5]["date"]}}</td>
     </tr>
     <tr>
       <td>Closed K-12 Schools</td>
@@ -165,7 +162,6 @@
         </blockquote>
         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
       </td>
-      <td>{{timeline_data[6]["date"]}}</td>
     </tr>
     <tr>
       <td>Closed Visiting Nursing Homes</td>
@@ -177,7 +173,6 @@
         </blockquote>
         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
       </td>
-      <td>{{timeline_data[7]["date"]}}</td>
     </tr>
     <tr>
       <td>Closed All Non-Essential Businesses</td>
@@ -189,7 +184,6 @@
         </blockquote>
         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
       </td>
-      <td>{{timeline_data[8]["date"]}}</td>
     </tr>
   </table>
   {% else %} {% endif %}
@@ -228,7 +222,7 @@
   <hr>
 
 
-  <h2 class="center sentiment" style="text-align:center">{{governor}}'s Meaning Making</h2>
+  <h2 class="center sentiment" style="text-align:center;font-style:italic;">{{governor}}'s Meaning Making</h2>
   <p class="head center sentiment1" style="text-align:center">This section analyzes how religion factored in to {{handle}}'s language and reactions during COVID-19</p>
   <div class="religion-parent">
     <img class="religion-child" class="center" src="../static/images/{{state}}_religion_plot.png" alt="Religion Plot" />

@@ -13,8 +13,13 @@ body {
 
 .title{
   text-align: left;
+<<<<<<< HEAD
   font-size: 45px; 
   font-family:Futura; 
+=======
+  font-size: 56px;
+  font-family:Futura;
+>>>>>>> 04b03e7aaff2fafc93f518653762103b6e6216e2
   color: red;
   padding-left: 5%;
   padding-top: 0px;
@@ -23,8 +28,13 @@ body {
 
 #title-subheading{
   text-align: left;
+<<<<<<< HEAD
   font-size: 12px; 
   font-family:Futura; 
+=======
+  font-size: 15px;
+  font-family:Futura;
+>>>>>>> 04b03e7aaff2fafc93f518653762103b6e6216e2
   color: black;
   padding-left: 5.5%;
   padding-bottom: 500px;
@@ -162,6 +172,7 @@ th, td {
 
 .sentiment{
   font-size: 40px;
+  margin-bottom: 10px;
 }
 
 .sentiment1{
