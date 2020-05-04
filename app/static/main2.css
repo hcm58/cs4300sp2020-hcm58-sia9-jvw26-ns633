@@ -12,8 +12,8 @@ body {
 
 .title{
   text-align: left;
-  font-size: 56px; 
-  font-family:Futura; 
+  font-size: 56px;
+  font-family:Futura;
   color: red;
   padding-left: 5%;
   padding-top: 50px;
@@ -22,8 +22,8 @@ body {
 
 #title-subheading{
   text-align: left;
-  font-size: 15px; 
-  font-family:Futura; 
+  font-size: 15px;
+  font-family:Futura;
   color: black;
   padding-left: 5.5%;
   padding-bottom: 500px;
@@ -160,6 +160,7 @@ th, td {
 
 .sentiment{
   font-size: 40px;
+  margin-bottom: 10px;
 }
 
 .sentiment1{
