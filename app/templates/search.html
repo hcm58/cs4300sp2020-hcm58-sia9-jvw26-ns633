@@ -62,22 +62,22 @@
   <br>
 
 
-  <div class="boxx">
+  <div>
     <form class="form-inline global-search">
       <div id="results">
         <img id="profile" class="center" src="../static/profile_images/{{state}}_profile.png" alt="Governor's Profile Picture">
       </div>
-      <h1 id="pro">{{output_message}}</h1>
+      {% if output_message|length != 0 %}
+      <h1 class="boxx" id="pro">{{output_message}}</h1>
+      {% else %} {% endif %}
     </form>
   </div>
 
 
   {% if timeline_data|length != 0 %}
 
-  <br>
-
-
-  <hr>
+  <br> {% if output_message|length != 0 %}
+  <hr> {% else %} {% endif %}
 
   <h2 class="twitter">Twitter Statistics:</h2>
 
@@ -194,10 +194,8 @@
   </table>
   {% else %} {% endif %}
 
-  <br>
-
-  <hr> {% if timeline_data|length != 0 %}
-
+  <br> {% if timeline_data|length != 0 %}
+  <hr>
   <!-- <h2 class="center" style="text-align:center">Twitter Statistics:</h2>
   <div>
     <div id=twitter-mentions>
@@ -226,9 +224,8 @@
   <p class="head center sentiment1" style="text-align:center">This graph demonstrates how {{state}}'s constituents felt towards their governor during the 2020 COVID-19 Pandemic.</p>
   <img id="sent-plot" class="center" src="../static/images/{{state}}_sent_plot1.png" alt="Comment Sentiment Plot" /> {% else %} {% endif %}
 
-  <br>
-
-  <hr> {% if religion_data|length != 0 %}
+  <br> {% if religion_data|length != 0 %}
+  <hr>
 
 
   <h2 class="center sentiment" style="text-align:center">{{governor}}'s Meaning Making</h2>
