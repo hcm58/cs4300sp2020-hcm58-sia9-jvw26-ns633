@@ -17,9 +17,14 @@ net_id = "hcm58, sia9, ns633, jvw6"
 @irsystem.route('/', methods=['GET'])
 def search():
 	query = request.args.get('search')
+	saved_query = query
 	if query is not None:
 		query = min_edit_query(query) #gets min edit distance entry
-	state = getState(query)
+	if query == "no match":
+		state = query
+	else:
+		state = getState(query)
+
 	if state == "notastate":
 		output_message = ''
 		output_data = ''
@@ -29,6 +34,16 @@ def search():
 		handle=''
 		governor=''
 		static_data=''
+	elif state == "no match":
+		output_message = "The following is not a valid query: " + str(saved_query)
+		output_data = ''
+		link=''
+		timeline_data=''
+		religion_data=''
+		handle=''
+		governor=''
+		static_data=''
+		state == "notastate"
 	else:
 		governor = getGov(state, statedictionary)
 		handle = getHandle(state, statedictionary)
