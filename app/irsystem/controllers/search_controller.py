@@ -43,8 +43,8 @@ def search():
 		religion_data = timeline_data[3]
 		static_data = getstaticdata(state)
 
-		make_state_comment_plot(state, comment_sentiment[state])
+		exception = make_state_comment_plot(state, comment_sentiment[state])
 		make_religion_plot(state, religion_data)
 
 
-	return render_template('search.html', governor=governor, handle=handle, name=project_name, netid=net_id, state=state, output_message=output_message, data=output_data, timeline_data=timeline_data, religion_data=religion_data, static_data=static_data)
+	return render_template('search.html', exception=exception, governor=governor, handle=handle, name=project_name, netid=net_id, state=state, output_message=output_message, data=output_data, timeline_data=timeline_data, religion_data=religion_data, static_data=static_data)
