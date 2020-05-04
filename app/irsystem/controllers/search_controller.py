@@ -34,6 +34,7 @@ def search():
 		handle=''
 		governor=''
 		static_data=''
+		exception=''
 	elif state == "no match":
 		output_message = "The following is not a valid query: " + str(saved_query)
 		output_data = ''
