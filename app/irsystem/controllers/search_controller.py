@@ -44,6 +44,7 @@ def search():
 		handle=''
 		governor=''
 		static_data=''
+		exception=''
 		state == "notastate"
 	else:
 		governor = getGov(state, statedictionary)
