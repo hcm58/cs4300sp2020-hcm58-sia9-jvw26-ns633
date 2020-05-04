@@ -33,7 +33,7 @@ def make_state_comment_plot(state, avg_by_day):
     # plt.xticks(rotation=70)
     plt.xlabel("Date")
     plt.ylabel("Avg Sentiment Score")
-    plt.title(state + " Average Comment Sentiment Score By Day")
+    plt.title("Average Comment Sentiment Score By Day")
 
 
     link = 'app/static/images/' + state + '_sent_plot1.png'

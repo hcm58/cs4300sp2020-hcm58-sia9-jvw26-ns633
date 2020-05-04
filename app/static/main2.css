@@ -13,8 +13,8 @@ body {
 
 .title{
   text-align: left;
-  font-size: 45px; 
-  font-family:Futura; 
+  font-size: 45px;
+  font-family:Futura;
   color: red;
   padding-left: 5%;
   padding-top: 0px;
@@ -23,8 +23,8 @@ body {
 
 #title-subheading{
   text-align: left;
-  font-size: 12px; 
-  font-family:Futura; 
+  font-size: 12px;
+  font-family:Futura;
   color: black;
   padding-left: 5.5%;
   padding-bottom: 500px;
@@ -88,6 +88,10 @@ body {
 #pro{
   font-size: 30px;
   text-align: center;
+  background-color: #BDC9B8;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border: 1px solid black;
 }
 
 .boxx{
@@ -96,9 +100,9 @@ body {
   margin-right: 300px;
   padding-top: 20px;
   padding-bottom: 20px;
-  border: 3px solid black;
+  border: 1px solid black;
   border-radius: 5px 0 0 5px;
-  border-radius: 25px;
+  border-radius: 5px;
 }
 
 .twitter{

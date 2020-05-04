@@ -68,7 +68,7 @@
         <img id="profile" class="center" src="../static/profile_images/{{state}}_profile.png" alt="Governor's Profile Picture">
       </div>
       {% if output_message|length != 0 %}
-      <h1 class="boxx" id="pro">{{output_message}}</h1>
+      <h1 id="pro">{{output_message}}</h1>
       {% else %} {% endif %}
     </form>
   </div>
@@ -79,7 +79,8 @@
   <br> {% if output_message|length != 0 %}
   <hr> {% else %} {% endif %}
 
-  <h2 class="twitter">Twitter Statistics:</h2>
+  <h2 class="twitter" style="text-align:center; font-style:italic; margin-bottom:10px;">Fast Facts</h2>
+  <p class="head center sentiment1" style="text-align:center">Some statistic's about {{handle}}'s Twitter usage and COVID-19.</p>
 
 
   <br>
