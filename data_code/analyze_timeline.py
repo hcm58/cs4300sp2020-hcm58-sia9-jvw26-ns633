@@ -77,7 +77,10 @@ def get_direct_mentions(lst):
 
 #takes in direct-mentions, returns the last element in the lst, assumed to be the earliest
 def get_first_mention(lst):
-    return lst[0]
+    if len(lst) < 1:
+        return "No First Direct Mention Found"
+    else:
+        return lst[0]
 
 #takes in state list of total tweets and list of direct mentions, returns percentage of gov_tweet_lst
 #that mention coronavirus
