@@ -3,7 +3,7 @@ listofqueries = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colo
                 "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska",
                 "Nevada", "New Hampshire","New Jersey", "New Mexico", "New York", "North Carolina","North Dakota", "Ohio",
                 "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas",
-                "Utah", "Vermont", "Virgina", "Washington", "West Virginia","Wisconsin", "Wyoming", "Kay Ivey", "Mike Dunleavy", "Doug Ducey", "Asa Hutchinson", "Gavin Newsom", "Jared Polis", "Ned Lamont",
+                "Utah", "Vermont", "Virginia", "Washington", "West Virginia","Wisconsin", "Wyoming", "Kay Ivey", "Mike Dunleavy", "Doug Ducey", "Asa Hutchinson", "Gavin Newsom", "Jared Polis", "Ned Lamont",
                 "John Carney", "Ron DeSantis", "Brian Kemp", "David Ige", "Brad Little", "J.B. Pritzker", "Eric Holcomb",
                 "Kim Reynolds", "Laura Kelly", "Andy Beshear", "John Bel Edwards", "Janet Mills", "Larry Hogan",
                 "Charlie Baker", "Gretchen Whitmer", "Tim Walz", "Tate Reeves", "Mike Parson", "Steve Bullock",
