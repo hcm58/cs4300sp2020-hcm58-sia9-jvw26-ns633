@@ -120,8 +120,10 @@ def example_sent(state_list, state_handle):
 
                             tokens = word_pattern.findall(tweet[10])
                             token_counts = Counter(tokens)
-                            if len(tokens) > 10:
+                            if len(tokens) > 15:
                                 sentiment = score_counts(token_counts, word_weights)
+                                if "don" in tokens or 'not' in tokens:
+                                    sentiment-=0.4
                                 state_tups.append(tuple((sentiment, link)))
 
                     #get the highest sentiment tweet and lowest
