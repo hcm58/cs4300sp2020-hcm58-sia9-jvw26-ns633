@@ -11,7 +11,6 @@ def load_word_weight(lexicon_file):
         for line in lexicon_reader:
             weight, word = line.rstrip().split(",") ## split on comma
             word_weights[word] = float(weight) ## convert string to number
-
     return word_weights
 
 #load sentiment weights
@@ -45,6 +44,14 @@ with open("data_code/twitter_info.csv", encoding='utf-8') as info:
 
     for line in reader:
         state_list.append(line[0])
+
+state_handles = {}
+with open("data_code/stategovhandleparty.csv", encoding='utf-8') as info:
+    reader = csv.reader(info)
+    next(reader)
+
+    for line in reader:
+        state_handles[line[0]] = line[2]
 
 #helper function to get the average sentiment from a dict of all comment sentiment
 def avg_sent(state_dict):
@@ -95,5 +102,43 @@ def compile_comment_sent(state_list):
             continue
     return all_states
 
+def example_sent(state_list, state_handle):
+        states_example_tweets = {}
+        for state in state_list:
+            try:
+                with open("data_code/comment_data/" + str(state) + ".csv", encoding = 'utf-8') as state_file:
+                    reader = csv.reader(state_file)
+                    state_tups = []
+                    next(reader)
+                    for tweet in reader:
+                        link = tweet[19]
+                        handle = tweet[7]
+
+                        gov_handle = state_handle[state][1:].lower()
+
+                        if handle != gov_handle:
+
+                            tokens = word_pattern.findall(tweet[10])
+                            token_counts = Counter(tokens)
+                            if len(tokens) > 10:
+                                sentiment = score_counts(token_counts, word_weights)
+                                state_tups.append(tuple((sentiment, link)))
+
+                    #get the highest sentiment tweet and lowest
+                    if len(state_tups)>0:
+                        state_high = sorted(state_tups, key=lambda x: x[0], reverse=True)[0]
+                        state_low = sorted(state_tups, key=lambda x: x[0])[0]
+                    else:
+                        state_high = (0, "No Tweet Available")
+                        state_low = (0, "No Tweet Available")
+
+
+                states_example_tweets[state] = [state_high, state_low]
+            except FileNotFoundError:
+                print(state + " Not Found")
+                continue
+        return states_example_tweets
+
 #get dictionary of all avg comment sentiment data by day
 comment_sentiment = compile_comment_sent(state_list)
+example_sentiment = example_sent(state_list, state_handles)

@@ -2961,6 +2961,7 @@
 -0.25,domineering
 0.8,donation
 -0.25,donkey
+-0.8,don't
 -0.25,doofus
 -0.75,doom
 -1,doomed
@@ -6699,6 +6700,7 @@
 0.5,novelty
 -0.25,novice
 -0.75,noxious
+-0.3,no
 -0.4,nuclear
 -0.5,nuisance
 -0.6,nullify
@@ -9594,7 +9596,7 @@
 -1,testily
 -1,testy
 -0.25,tether
-0.5,thank
+0.7,thank
 1,thankful
 1,thanking
 -1,thankless
@@ -9648,6 +9650,7 @@
 -0.6,throbs
 0.6,throne
 -0.5,throttle
+-0.8, executed
 -0.4,thrusting
 -0.4,thudding
 -0.5,thug

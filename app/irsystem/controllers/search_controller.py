@@ -4,7 +4,7 @@ from app.irsystem.models.helpers import NumpyEncoder as NumpyEncoder
 from data_code.sent_comment_data import comment_sentiment, state_list
 from data_code.basicinfofromquery import *
 from data_code.analyze_timeline import *
-from data_code.sent_comment_data import comment_sentiment
+from data_code.sent_comment_data import comment_sentiment, example_sentiment
 from app.irsystem.controllers.make_sent_plots import make_state_comment_plot
 from data_code.editdistance import *
 from data_code.analyze_timeline import *
@@ -35,6 +35,7 @@ def search():
 		governor=''
 		static_data=''
 		exception=''
+		examples=''
 	elif state == "no match":
 		output_message = "The following is not a valid query: " + str(saved_query)
 		output_data = ''
@@ -45,6 +46,7 @@ def search():
 		governor=''
 		static_data=''
 		exception=''
+		examples=''
 		state == "notastate"
 	else:
 		governor = getGov(state, statedictionary)
@@ -60,8 +62,10 @@ def search():
 		religion_data = timeline_data[3]
 		static_data = getstaticdata(state)
 
+		examples=example_sentiment[state]
+
 		exception = make_state_comment_plot(state, comment_sentiment[state])
 		make_religion_plot(state, religion_data)
 
 
-	return render_template('search.html', exception=exception, governor=governor, handle=handle, name=project_name, netid=net_id, state=state, output_message=output_message, data=output_data, timeline_data=timeline_data, religion_data=religion_data, static_data=static_data)
+	return render_template('search.html', examples=examples, exception=exception, governor=governor, handle=handle, name=project_name, netid=net_id, state=state, output_message=output_message, data=output_data, timeline_data=timeline_data, religion_data=religion_data, static_data=static_data)
