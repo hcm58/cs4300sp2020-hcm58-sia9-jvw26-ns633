@@ -5,7 +5,7 @@ statelist = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado
              "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska",
              "Nevada", "New Hampshire","New Jersey", "New Mexico", "New York", "North Carolina","North Dakota", "Ohio",
              "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas",
-             "Utah", "Vermont", "Virgina", "Washington", "West Virginia","Wisconsin", "Wyoming"]
+             "Utah", "Vermont", "Virginia", "Washington", "West Virginia","Wisconsin", "Wyoming"]
 
 def getstaticdata(state):
     with open("data_code/dates4states.csv", encoding='utf-8') as statedates:
